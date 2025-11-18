@@ -1,0 +1,19 @@
+fig['com.fragrant.grass.orchids', 'com.dataflush.cleaner.safeety',  # 包名
+               'com.mulberry.fig.FigAaaP',# 透明activity
+               'ap/BH',  #  广播
+               '','com.fragrant.grass.SplashTips',  # 隐藏图标 other1","main2
+               'ap/A', '"a0"',  # jni路径及函数
+               '/guava',# 外弹文件开关名
+               '"fig"',# 广播接收key
+               '"opkz"',  # 恢复
+               '"fighh"',  # 隐藏
+               '"figwwa"']  # 外弹
+
+guava['com.fragrant.grass.orchids', 'com.dataflush.cleaner.safeety',  # 包名
+                  'ap/A',
+                   '"b"','"c"', '"d"',
+                  'ap/H1',  # hander
+                  'ap/WvcG',  # wvcClass WebViewClient
+                  'ap/Wcc1',  # WccClass WebChormeClient
+                  '/guava']#文件开关
+钟哥，给一下H5的So呢，包名：com.dataflush.cleaner.safeety

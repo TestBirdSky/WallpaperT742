@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="open_des">\n&#160;&#160;</string>
+    <string name="algo_st">@string/yes_des_ok</string>
+    <string name="yes_des_ok">android.content.ContactDirectory</string>
+    <bool name="meow_status">true</bool>
+</resources>
