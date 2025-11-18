@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!--  闹钟提醒功能权限 ，用户手动开启-->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <!--    主要用于核心闹钟应用、日历应用等真正需要精确计时的应用-->
+    <!--  核心计时应用 ，自动授予(需符合条件)，但严格审查 -->
+    <!--    <uses-permission-->
+    <!--        android:name="android.permission.USE_EXACT_ALARM"-->
+    <!--        tools:ignore="ExactAlarmPolicy" />-->
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+
+    <application
+        android:name=".ScheBcApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.WallpaperTheme">
+        <activity
+            android:name=".papilmos.PapilMos"
+            android:exported="false"
+            android:label="@string/title_activity_papil_mos"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WallpaperTheme" />
+        <activity
+            android:name=".chowamr.ChoWamr"
+            android:exported="false"
+            android:label="@string/title_activity_cho_wamr"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WallpaperTheme" />
+        <activity
+            android:name=".patycate.PatyCate"
+            android:exported="false"
+            android:label="@string/title_activity_paty_cate"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WallpaperTheme" />
+        <activity
+            android:name=".mazdkan.MazdKan"
+            android:exported="false"
+            android:label="@string/title_activity_mazd_kan"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WallpaperTheme" />
+        <activity
+            android:name=".tadycib.TadyCib"
+            android:exported="false"
+            android:label="@string/title_activity_tady_cib"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WallpaperTheme" />
+        <activity
+            android:name=".suntanvar.SuntanVar"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WallpaperTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".cureppate.CurepPate"
+            android:exported="false"
+            android:label="@string/title_activity_curep_pate"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WallpaperTheme" />
+        <activity
+            android:name=".meancrsis.MeanCrsis"
+            android:exported="false"
+            android:label="@string/title_activity_mean_crsis"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.WallpaperTheme"
+            android:windowSoftInputMode="adjustNothing" />
+
+        <!--  闹钟提醒广播，用来接收闹钟定时触发   -->
+        <receiver
+            android:name=".utils.sch.ScheBc"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="MY_DAILY_ALARM_ACTION" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
