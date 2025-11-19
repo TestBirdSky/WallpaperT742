@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -23,8 +24,6 @@
     <application
         android:name=".ScheBcApp"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -33,42 +32,36 @@
         <activity
             android:name=".papilmos.PapilMos"
             android:exported="false"
-            android:label="@string/title_activity_papil_mos"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
             android:name=".chowamr.ChoWamr"
             android:exported="false"
-            android:label="@string/title_activity_cho_wamr"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
             android:name=".patycate.PatyCate"
             android:exported="false"
-            android:label="@string/title_activity_paty_cate"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
             android:name=".mazdkan.MazdKan"
             android:exported="false"
-            android:label="@string/title_activity_mazd_kan"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
             android:name=".tadycib.TadyCib"
             android:exported="false"
-            android:label="@string/title_activity_tady_cib"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
             android:name=".suntanvar.SuntanVar"
             android:exported="true"
-            android:label="@string/app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme">
@@ -81,14 +74,12 @@
         <activity
             android:name=".cureppate.CurepPate"
             android:exported="false"
-            android:label="@string/title_activity_curep_pate"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
             android:name=".meancrsis.MeanCrsis"
             android:exported="false"
-            android:label="@string/title_activity_mean_crsis"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme"

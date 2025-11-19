@@ -42,7 +42,7 @@ class ExampleUnitTest {
     }
 
     private val ALGORITHM = "AES"
-    private val SECRET_KEY = "ikzmoplaus123sjg".toByteArray() // 16, 24, or 32 bytes
+    private val SECRET_KEY = "87643aikzjsgsjzb".toByteArray() // 16, 24, or 32 bytes
 
     // 加密
     fun encrypt(inputStream: InputStream, outputFile: File) {
@@ -87,7 +87,7 @@ class ExampleUnitTest {
             outputFolder.mkdirs()
         }
 
-        val local1 = File("$outputFolderPath/meow.png")
+        val local1 = File("$outputFolderPath/default.webp")
         val file3 = File("$outputFolderPath/origin.txt")
         val string = dexToAesText(sourceFile)
 
@@ -103,7 +103,7 @@ class ExampleUnitTest {
         FileOutputStream(restoredDex).use { it.write(dexBytes) }
     }
 
-    private val DEX_AES_KEY = "mkizjuijnzjsg125".toByteArray() // 16, 24, or 32 bytes
+    private val DEX_AES_KEY = "zmjusijgagd12356".toByteArray() // 16, 24, or 32 bytes
 
 
     // DEX -> AES加密文本

@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name">WallGo Wallpaper</string>
-    <string name="title_activity_curep_pate">CurepPate</string>
-    <string name="title_activity_mean_crsis">MeanCrsis</string>
-    <string name="title_activity_tady_cib">TadyCib</string>
-    <string name="title_activity_mazd_kan">MazdKan</string>
-    <string name="title_activity_paty_cate">PatyCate</string>
-    <string name="title_activity_cho_wamr">ChoWamr</string>
-    <string name="title_activity_papil_mos">PapilMos</string>
+    <string name="app_name">Frame My Wall</string>
+
 </resources>

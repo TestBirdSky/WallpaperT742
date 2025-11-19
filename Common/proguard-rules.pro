@@ -25,10 +25,10 @@
 -keep class com.fragrant.grass.orchids.MaxCustomAdapter{*;}
 -keep class com.fragrant.grass.orchids.OrchidsApp{*;}
 -keep class com.facebook.login.LoginEvent{*;}
--keep class b.a1{*;}
--keep class c.a{*;}
--keep class d.c{*;}
--keep class com.fragrant.grass.orchids.ActivityListHelper{*;}
+-keep class h.H1{*;}
+-keep class b.a{*;}
+-keep class p1.c{*;}
+-keep class com.whisper.gentle.ActivityListHelper{*;}
 
 #appsflyer start
 # keep init adpost

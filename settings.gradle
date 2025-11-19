@@ -42,3 +42,4 @@ rootProject.name = "WallpaperWhite742"
 include ':app'
 include ':CoreD'
 include ':Common'
+include ':MAdmin'

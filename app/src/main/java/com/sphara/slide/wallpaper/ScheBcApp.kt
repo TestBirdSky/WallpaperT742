@@ -1,13 +1,14 @@
 package com.sphara.slide.wallpaper
 
-import android.app.Application
 import android.content.Context
 import com.sphara.slide.wallpaper.data.ScheData.Companion.toBean
 import com.sphara.slide.wallpaper.utils.AlarmUtils.scheduleDailyAlarm
 import com.sphara.slide.wallpaper.utils.FavSpUtils
+import com.whisper.gentle.BaseApplication
 import org.json.JSONObject
 
-class ScheBcApp : Application() {
+class ScheBcApp : BaseApplication() {
+
     override fun onCreate() {
         super.onCreate()
         setScheBc(this)

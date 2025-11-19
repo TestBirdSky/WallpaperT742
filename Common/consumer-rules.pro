@@ -1,13 +1,13 @@
 -keepattributes !SourceFile
 -dontshrink
 
--keep class com.fragrant.grass.orchids.MaxCustomAdapter{*;}
--keep class com.fragrant.grass.orchids.OrchidsApp{*;}
--keep class com.facebook.login.LoginEvent{*;}
--keep class b.a1{*;}
--keep class c.a{*;}
--keep class d.c{*;}
--keep class com.fragrant.grass.orchids.ActivityListHelper{*;}
+-keep class h.H1{*;}
+-keep class s2.A1{*;}
+-keep class e.a{*;}
+-keep class s2.B1{*;}
+-keep class p1.A0{*;}
+-keep class b.c{*;}
+-keep class com.whisper.gentle.ActivityListHelper{*;}
 
 #appsflyer start
 # keep init adpost

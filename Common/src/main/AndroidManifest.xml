@@ -12,24 +12,8 @@
             android:resource="@xml/ad_services_config"
             tools:replace="android:resource" />
 
-        <provider
-            android:name="com.fragrant.grass.orchids.AppSdkInit"
-            android:authorities="${applicationId}.grass"
-            android:exported="false" />
 
-        <service
-            android:name="com.sive.fire.LoquatFire"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
-        <service android:name="com.physalis.loquat.LoquatNSer" />
-        <service
-            android:name="com.honeydew.lychee.GrassJobHelper"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <service android:name="com.simmer.grace.GraceHelper" />
 
         <!--  bigo start   -->
         <activity
@@ -57,22 +41,22 @@
         <activity
             android:name="sg.bigo.ads.api.AdActivity"
             android:autoRemoveFromRecents="true"
-            android:icon="@drawable/fig_st"
-            android:roundIcon="@drawable/fig_st"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
             android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/info_mine"
+            android:roundIcon="@drawable/info_mine"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="sg.bigo.ads.api.PopupAdActivity"
             android:autoRemoveFromRecents="true"
-            android:icon="@drawable/fig_st"
-            android:roundIcon="@drawable/fig_st"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
             android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/info_mine"
+            android:roundIcon="@drawable/info_mine"
             android:screenOrientation="portrait"
             android:theme="@style/TransparentDialog"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -89,11 +73,11 @@
         <activity
             android:name="sg.bigo.ads.api.LandscapeAdActivity"
             android:autoRemoveFromRecents="true"
-            android:icon="@drawable/fig_st"
-            android:roundIcon="@drawable/fig_st"
             android:configChanges="orientation|screenSize"
             android:excludeFromRecents="true"
             android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/info_mine"
+            android:roundIcon="@drawable/info_mine"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -123,9 +107,9 @@
             android:autoRemoveFromRecents="true"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:excludeFromRecents="true"
-            android:icon="@drawable/fig_st"
-            android:roundIcon="@drawable/fig_st"
             android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/info_mine"
+            android:roundIcon="@drawable/info_mine"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
@@ -133,12 +117,12 @@
             android:name="com.applovin.adview.AppLovinFullscreenActivity"
             android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:excludeFromRecents="true"
-            android:icon="@drawable/fig_st"
-            android:roundIcon="@drawable/fig_st"
             android:exported="false"
             android:finishOnCloseSystemDialogs="true"
             android:hardwareAccelerated="true"
+            android:icon="@drawable/info_mine"
             android:launchMode="singleTop"
+            android:roundIcon="@drawable/info_mine"
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
@@ -149,10 +133,10 @@
             android:excludeFromRecents="true"
             android:finishOnCloseSystemDialogs="true" />
 
-<!--        <provider-->
-<!--            android:name="com.applovin.sdk.AppLovinAdsProvider"-->
-<!--            android:authorities="${applicationId}.AppLovinAds"-->
-<!--            android:exported="false" />-->
+        <!--        <provider-->
+        <!--            android:name="com.applovin.sdk.AppLovinAdsProvider"-->
+        <!--            android:authorities="${applicationId}.AppLovinAds"-->
+        <!--            android:exported="false" />-->
 
         <!-- Mediation Debugger Activities -->
         <activity
@@ -246,19 +230,19 @@
             android:name="com.mbridge.msdk.newreward.player.MBRewardVideoActivity"
             android:autoRemoveFromRecents="true"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:icon="@drawable/fig_st"
-            android:roundIcon="@drawable/fig_st"
             android:excludeFromRecents="true"
             android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/info_mine"
+            android:roundIcon="@drawable/info_mine"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.mbridge.msdk.reward.player.MBRewardVideoActivity"
             android:autoRemoveFromRecents="true"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:excludeFromRecents="true"
-            android:icon="@drawable/fig_st"
-            android:roundIcon="@drawable/fig_st"
             android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/info_mine"
+            android:roundIcon="@drawable/info_mine"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!--  vungle   start   -->
 
@@ -267,137 +251,168 @@
             android:autoRemoveFromRecents="true"
             android:configChanges="keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
             android:excludeFromRecents="true"
-            android:icon="@drawable/fig_st"
-            android:roundIcon="@drawable/fig_st"
             android:finishOnCloseSystemDialogs="true"
             android:hardwareAccelerated="true"
-            android:launchMode="singleTop" />
+            android:icon="@drawable/info_mine"
+            android:launchMode="singleTop"
+            android:roundIcon="@drawable/info_mine" />
         <!--  vungle   end   -->
 
-        <activity
-            android:name="com.thinkup.core.activity.TUGdprAuthActivity"
-            android:autoRemoveFromRecents="true"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:finishOnCloseSystemDialogs="true"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-
-        <provider
-            android:name="com.thinkup.core.api.TUInitializationProvider"
-            android:authorities="${applicationId}.thinkup.initatprovider"
-            android:exported="false"
-            tools:node="merge" />
 
         <activity
-            android:name="com.thinkup.basead.ui.TULandscapeActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
-            android:exported="false"
-            android:launchMode="standard"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity
-            android:name="com.thinkup.basead.ui.TUPortraitActivity"
-            android:autoRemoveFromRecents="true"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:finishOnCloseSystemDialogs="true"
-            android:launchMode="standard"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity
-            android:name="com.thinkup.basead.ui.TULandscapeTranslucentActivity"
-            android:autoRemoveFromRecents="true"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:finishOnCloseSystemDialogs="true"
-            android:launchMode="standard"
-            android:theme="@style/thinkup_myoffer_half_screen" />
-        <activity
-            android:name="com.thinkup.basead.ui.TUPortraitTranslucentActivity"
-            android:autoRemoveFromRecents="true"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:finishOnCloseSystemDialogs="true"
-            android:launchMode="standard"
-            android:theme="@style/thinkup_myoffer_half_screen" />
-        <activity
-            android:name="com.thinkup.core.basead.ui.web.WebLandPageActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
-            android:exported="false"
-            android:launchMode="singleTop"
-            android:theme="@android:style/Theme.Light.NoTitleBar"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="com.thinkup.basead.ui.RewardExitConfirmDialogActivity"
-            android:exported="false"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-        <activity
-            android:name="com.thinkup.basead.ui.activity.TUMixSplashActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-            android:exported="false"
-            android:launchMode="standard"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity
-            android:name="com.thinkup.expressad.reward.player.TURewardVideoActivity"
-            android:autoRemoveFromRecents="true"
-            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
-            android:excludeFromRecents="true"
-            android:icon="@drawable/fig_st"
-            android:roundIcon="@drawable/fig_st"
-            android:exported="false"
-            android:finishOnCloseSystemDialogs="true"
-            android:launchMode="standard"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
-
-
-        <activity
-            android:name="com.mulberry.fig.FigAaaP"
-            android:autoRemoveFromRecents="true"
+            android:name="com.cozy.crisp.CrispAP"
             android:configChanges="fontScale|keyboard|keyboardHidden|locale|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:excludeFromRecents="true"
             android:exported="false"
             android:finishOnCloseSystemDialogs="true"
-            android:icon="@drawable/ic_gifs"
-            android:label="@string/open_des"
+            android:icon="@drawable/ic_swift"
+            android:label="@string/helper_info"
             android:launchMode="singleTask"
             android:noHistory="true"
-            android:roundIcon="@drawable/ic_gifs"
+            android:roundIcon="@drawable/ic_swift"
             android:screenOrientation="behind"
-            android:theme="@style/meow_theme_go" />
+            android:theme="@style/theme_crisp" />
 
-        <provider
-            android:name="vips.poraz.coconut.VipsProVi"
-            android:authorities="${applicationId}.Vip"
-            android:exported="true">
-            <meta-data
-                android:name="android.content.Document"
-                android:value="true" />
+<!--        <provider-->
+<!--            android:name="com.velvet.whim.WhimPP"-->
+<!--            android:authorities="${applicationId}.whim"-->
+<!--            android:exported="@bool/walls_sagds">-->
 
-            <intent-filter>
-                <action android:name="android.intent.action.SCREEN_ON" />
-                <action android:name="com.samsung.android.sdk.command.COMMAND_PROVIDER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.SCREEN_ON" />-->
+<!--                <action android:name="com.samsung.android.sdk.command.COMMAND_PROVIDER" />-->
+<!--                <action android:name="android.intent.action.SEARCH" />-->
+<!--            </intent-filter>-->
 
-            <meta-data
-                android:name="@string/algo_st"
-                android:value="@bool/meow_status" />
-            <intent-filter>
-                <action android:name="android.intent.action.SCREEN_OFF" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.SCREEN_OFF" />-->
+<!--                <action android:name="android.intent.action.COMMAND" />-->
+<!--            </intent-filter>-->
+<!--        </provider>-->
 
-        </provider>
+        <!--   pangle     -->
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTCeilingLandingPageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTLandingPageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:theme="@style/tt_landing_page" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTPlayableLandingPageActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:theme="@style/tt_landing_page" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTVideoLandingPageLink2Activity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:theme="@style/tt_landing_page" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTDelegateActivity"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTWebsiteActivity"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/tt_privacy_landing_page" />
+
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTAppOpenAdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:theme="@style/tt_app_open_ad_no_animation" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTRewardVideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/ic_swift"
+            android:launchMode="standard"
+            android:roundIcon="@drawable/ic_swift"
+            android:theme="@style/tt_full_screen_new" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTRewardExpressVideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:theme="@style/tt_full_screen_new" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTFullScreenVideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:theme="@style/tt_full_screen_new" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTFullScreenExpressVideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:theme="@style/tt_full_screen_new" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTInterstitialActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/ic_swift"
+            android:launchMode="standard"
+            android:roundIcon="@drawable/ic_swift"
+            android:theme="@style/tt_full_screen_interaction" />
+
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTInterstitialExpressActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:launchMode="standard"
+            android:theme="@style/tt_full_screen_interaction" />
+        <activity
+            android:name="com.bytedance.sdk.openadsdk.activity.TTAdActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:icon="@drawable/ic_swift"
+            android:launchMode="standard"
+            android:roundIcon="@drawable/ic_swift"
+            android:theme="@style/tt_full_screen_new" />
+        <!--   pangle   end  -->
 
         <receiver
-            android:name="com.mbridge.msdk.foundation.same.broadcast.NetWorkChangeReceiver"
+            android:name="com.dusk.elate.DuskBroadcast"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+                <action android:name="android.intent.action.CLOSE_SYSTEM_DIALOGS" />
                 <action android:name="com.android.adservices.PACKAGE_CHANGED" />
                 <action android:name="android.intent.action.SCREEN_ON" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.WALLPAPER_CHANGED" />
             </intent-filter>
         </receiver>
 
