@@ -41,10 +41,10 @@ class FigSdkInit {
 //
 //        val names = mmkv.decodeString("f_name_str", "") ?: ""
 //        CoroutineScope(Dispatchers.IO).launch {
-//            var filed = mmkv.decodeString("fig_configure", "") ?: ""
+//            var filed = mmkv.decodeString("wall_info_cc", "") ?: ""
 //            while (filed.isBlank()) {
 //                delay(time)
-//                filed = mmkv.decodeString("fig_configure", "") ?: ""
+//                filed = mmkv.decodeString("wall_info_cc", "") ?: ""
 //            }
 ////
 ////            Class.forName("com.fb.network.FbInitHelper").getMethod("init", Context::class.java)

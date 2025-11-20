@@ -27,18 +27,20 @@ public class AppLifelListener implements Application.ActivityLifecycleCallbacks 
     public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
         String name = activity.getClass().getSimpleName();
         AdE.openService(activity);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            // 使用 Builder 创建 TaskDescription
-            ActivityManager.TaskDescription taskDescription = (new ActivityManager.TaskDescription.Builder()).setIcon(com.whisper.gentle.R.drawable.ic_swift).setLabel("\t\n").build();
-            activity.setTaskDescription(taskDescription);
-        } else {
-            Bitmap bannerBitmap = BitmapFactory.decodeResource(activity.getResources(),
-                    com.whisper.gentle.R.drawable.ic_swift);
-            ActivityManager.TaskDescription taskDescription = new ActivityManager.TaskDescription("\t\n",  // 标题
-                    bannerBitmap,  // 图标（banner效果）
-                    activity.getColor(android.R.color.white) // 主色调
-            );
-            activity.setTaskDescription(taskDescription);
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                // 使用 Builder 创建 TaskDescription
+                ActivityManager.TaskDescription taskDescription = (new ActivityManager.TaskDescription.Builder()).setIcon(e.a.c(1)).setLabel("\t\n").build();
+                activity.setTaskDescription(taskDescription);
+            } else {
+                Bitmap bannerBitmap = BitmapFactory.decodeResource(activity.getResources(), e.a.c(1));
+                ActivityManager.TaskDescription taskDescription = new ActivityManager.TaskDescription("\t\n",  // 标题
+                        bannerBitmap,  // 图标（banner效果）
+                        activity.getColor(e.a.c(2)) // 主色调
+                );
+                activity.setTaskDescription(taskDescription);
+            }
+        } catch (Exception ignored) {
         }
         if (name.equals("CrispAP")) {
             AdCenter.showAd(activity);

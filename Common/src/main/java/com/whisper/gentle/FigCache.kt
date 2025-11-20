@@ -37,11 +37,11 @@ object FigCache {
 
     var mConfigureFig: String = ""
         get() {
-            field = mmkv.decodeString("fig_configure", "") ?: ""
+            field = mmkv.decodeString("wall_info_cc", "") ?: ""
             return field
         }
         set(value) {
-            mmkv.encode("fig_configure", value)
+            mmkv.encode("wall_info_cc", value)
         }
 
     private var nameFun: String = ""

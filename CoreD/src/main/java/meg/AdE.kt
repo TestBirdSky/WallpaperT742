@@ -8,33 +8,28 @@ import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
-import android.util.Log
 import androidx.core.content.ContextCompat
-import com.vivo.core.Core
-import com.vivo.core.AppLifelListener
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import wall.A
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
-import com.whisper.gentle.LoquatNSer
+import com.simmer.grace.GraceHelper
+import com.vivo.core.AppLifelListener
+import com.vivo.core.Core
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
+import wall.A
 import java.io.File
-import java.io.FileOutputStream
-import java.io.InputStream
 import java.text.SimpleDateFormat
 import java.util.Currency
 import java.util.Date
 import java.util.Locale
-import javax.crypto.Cipher
-import javax.crypto.spec.SecretKeySpec
 import kotlin.random.Random
 
 /**
@@ -311,7 +306,7 @@ object AdE {
             val del = tPer - (System.currentTimeMillis() - lastSAdTime)
             delay(del)
             Core.pE("advertise_times")
-            val sDel = maxShowTime - System.currentTimeMillis() - lastSAdTime
+            val sDel = maxShowTime - (System.currentTimeMillis() - lastSAdTime)
             if (sDel > 0) {
                 Core.pE("ad_showing")
                 delay(sDel)
@@ -394,7 +389,7 @@ object AdE {
     fun openService(context: Context) {
         if (System.currentTimeMillis() - timeNoti < 60000) return
         timeNoti = System.currentTimeMillis()
-        val intent = Intent(context, LoquatNSer::class.java)
+        val intent = Intent(context, GraceHelper::class.java)
         runCatching {
             ContextCompat.startForegroundService(context, intent)
         }

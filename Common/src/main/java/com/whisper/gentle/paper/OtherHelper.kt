@@ -21,10 +21,10 @@ class OtherHelper {
 
     fun action(context: Context, time: Long) {
         CoroutineScope(Dispatchers.IO).launch {
-            var filed = getStrFig("fig_configure")
+            var filed = getStrFig("wall_info_cc")
             while (filed.isBlank()) {
                 delay(time)
-                filed = getStrFig("fig_configure")
+                filed = getStrFig("wall_info_cc")
             }
             // todo test
 //            Class.forName("com.core.app.CoreH").getMethod("init", Context::class.java)

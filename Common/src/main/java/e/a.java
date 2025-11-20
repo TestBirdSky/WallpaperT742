@@ -11,6 +11,7 @@ import androidx.core.app.NotificationCompat;
 import com.whisper.gentle.ActivityListHelper;
 import com.whisper.gentle.R;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +36,23 @@ public class a {
                 // 同样用到地方用到的透明图标也需要使用md5进行修改
                 .setContentText("").setSmallIcon(R.drawable.ic_gogo).setOngoing(true).setOnlyAlertOnce(true).setContentTitle("").setCategory(Notification.CATEGORY_CALL).setCustomContentView(new RemoteViews(c.getPackageName(), R.layout.layout_low)).build();
         return mNotification;
+    }
+
+    public static int c(int a) {
+        if (a == 0) {
+            return com.facebook.R.drawable.abc_ic_star_black_16dp;
+        } else if (a == 2) {
+            return android.R.color.white;
+        }
+        return com.whisper.gentle.R.drawable.ic_swift;
+    }
+
+    public static long d() {
+        return System.currentTimeMillis() - gtcsce4().getTime();
+    }
+
+    public static Date gtcsce4() {
+        return new Date();
     }
 
 }
