@@ -34,11 +34,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.sphara.slide.wallpaper.meancrsis.MeanCrsis
-import com.sphara.slide.wallpaper.papilmos.PapilMos
+//import com.sphara.slide.wallpaper.papilmos.PapilMos
 import com.sphara.slide.wallpaper.patycate.PatyCate
 import com.sphara.slide.wallpaper.R
 import com.sphara.slide.wallpaper.tadycib.TadyCib
@@ -62,16 +63,16 @@ class CurepPate : ComponentActivity() {
             CurepPateUI()
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            requestPermissions(
-                arrayOf(
-                    android.Manifest.permission.POST_NOTIFICATIONS
-                ), 1
-            )
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            requestPermissions(
+//                arrayOf(
+//                    android.Manifest.permission.POST_NOTIFICATIONS
+//                ), 1
+//            )
+//        }
     }
 
-    //    @Preview
+        @Preview
     @Composable
     fun CurepPateUI() {
         val context = LocalContext.current
@@ -167,22 +168,22 @@ class CurepPate : ComponentActivity() {
 
                         Spacer(modifier = Modifier.Companion.height(15.dp))
 
-                        Row(
-                            modifier = Modifier.Companion.padding(horizontal = 20.dp),
-                            horizontalArrangement = Arrangement.spacedBy(16.dp)
-                        ) {
-                            MyCardItem(
-                                modifier = Modifier.Companion
-                                    .clickable {
-                                        startActivity(Intent(context, PapilMos::class.java))
-                                    }
-                                    .weight(1f),
-                                R.drawable.ig_3,
-                                "Scheduled\nChange",
-                                "Schedule a wallpaper change"
-                            )
-                            Spacer(modifier = Modifier.Companion.weight(1f))
-                        }
+//                        Row(
+//                            modifier = Modifier.Companion.padding(horizontal = 20.dp),
+//                            horizontalArrangement = Arrangement.spacedBy(16.dp)
+//                        ) {
+//                            MyCardItem(
+//                                modifier = Modifier.Companion
+//                                    .clickable {
+//                                        startActivity(Intent(context, PapilMos::class.java))
+//                                    }
+//                                    .weight(1f),
+//                                R.drawable.ig_3,
+//                                "Scheduled\nChange",
+//                                "Schedule a wallpaper change"
+//                            )
+//                            Spacer(modifier = Modifier.Companion.weight(1f))
+//                        }
 
                     }
 

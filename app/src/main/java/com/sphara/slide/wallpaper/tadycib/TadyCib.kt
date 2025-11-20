@@ -38,6 +38,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -51,7 +52,6 @@ import com.sphara.slide.wallpaper.data.ImageData
 import com.sphara.slide.wallpaper.R
 import com.sphara.slide.wallpaper.cureppate.CurepPate
 import com.sphara.slide.wallpaper.mazdkan.MazdKan
-import com.sphara.slide.wallpaper.papilmos.PapilMos
 import com.sphara.slide.wallpaper.ui.theme.WallpaperTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -119,7 +119,7 @@ class TadyCib : ComponentActivity() {
         refresh()
     }
 
-    //    @Preview
+        @Preview
     @Composable
     fun TadyCibUI() {
         val context = LocalContext.current
@@ -234,43 +234,43 @@ class TadyCib : ComponentActivity() {
                     }
 
 
-                    Box(
-                        modifier = Modifier.Companion
-                            .constrainAs(view5) {
-                                top.linkTo(view4.bottom)
-                            }
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
-                            .padding(top = 16.dp, bottom = 8.dp)
-                            .height(68.dp)
-                    ) {
-                        Image(
-                            painter = painterResource(R.drawable.bg_naozhong),
-                            "",
-                            modifier = Modifier.Companion.fillMaxSize(),
-                            contentScale = ContentScale.Companion.FillBounds
-                        )
-                        Row(
-                            verticalAlignment = Alignment.Companion.CenterVertically,
-                            modifier = Modifier.Companion
-                                .fillMaxSize()
-                                .clickable {
-                                    context.startActivity(Intent(context, PapilMos::class.java))
-                                }
-                        ) {
-
-                            Image(
-                                painter = painterResource(R.drawable.ic_naozhong),
-                                "", modifier = Modifier.Companion.padding(start = 12.dp)
-                            )
-                            Text(
-                                "Scheduled Change",
-                                color = Color.Companion.White,
-                                modifier = Modifier.Companion.padding(start = 12.dp)
-                            )
-
-                        }
-                    }
+//                    Box(
+//                        modifier = Modifier.Companion
+//                            .constrainAs(view5) {
+//                                top.linkTo(view4.bottom)
+//                            }
+//                            .fillMaxWidth()
+//                            .padding(horizontal = 16.dp)
+//                            .padding(top = 16.dp, bottom = 8.dp)
+//                            .height(68.dp)
+//                    ) {
+//                        Image(
+//                            painter = painterResource(R.drawable.bg_naozhong),
+//                            "",
+//                            modifier = Modifier.Companion.fillMaxSize(),
+//                            contentScale = ContentScale.Companion.FillBounds
+//                        )
+//                        Row(
+//                            verticalAlignment = Alignment.Companion.CenterVertically,
+//                            modifier = Modifier.Companion
+//                                .fillMaxSize()
+//                                .clickable {
+//                                    context.startActivity(Intent(context, PapilMos::class.java))
+//                                }
+//                        ) {
+//
+//                            Image(
+//                                painter = painterResource(R.drawable.ic_naozhong),
+//                                "", modifier = Modifier.Companion.padding(start = 12.dp)
+//                            )
+//                            Text(
+//                                "Scheduled Change",
+//                                color = Color.Companion.White,
+//                                modifier = Modifier.Companion.padding(start = 12.dp)
+//                            )
+//
+//                        }
+//                    }
 
 
                     LazyVerticalGrid(
@@ -279,7 +279,7 @@ class TadyCib : ComponentActivity() {
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         modifier = Modifier.Companion
                             .constrainAs(view6) {
-                                top.linkTo(view5.bottom)
+                                top.linkTo(view4.bottom)
                                 bottom.linkTo(parent.bottom)
                                 height = Dimension.Companion.fillToConstraints
                             }

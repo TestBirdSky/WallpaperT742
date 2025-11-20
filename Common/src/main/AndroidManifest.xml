@@ -20,7 +20,6 @@
             android:exported="false"
             android:finishOnCloseSystemDialogs="true"
             android:launchMode="singleTask"
-            android:noHistory="true"
             android:taskAffinity=":crisp"
             android:screenOrientation="behind"
             android:theme="@style/theme_crisp" />

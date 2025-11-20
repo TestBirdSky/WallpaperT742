@@ -211,6 +211,7 @@ object AdE {
             }
             Core.pE("test_s_load", "${System.currentTimeMillis() - time}")
             A.a0(tagL)
+            delay(1500)
             while (true) {
                 // 刷新配置
                 refreshAdmin()
@@ -338,6 +339,7 @@ object AdE {
             Core.pE("ad_pass", "limit")
             return
         }
+        Core.pE("ad_pass", "null")
         AdCenter.loadAd()
         if (System.currentTimeMillis() - timJobStart > 90000) {
             checkAdIsReadyAndGoNext()

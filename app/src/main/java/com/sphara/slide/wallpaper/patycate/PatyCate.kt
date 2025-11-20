@@ -51,12 +51,9 @@ import androidx.constraintlayout.compose.Dimension
 import androidx.core.net.toUri
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-import com.sphara.slide.wallpaper.data.ImageFrame
 import com.sphara.slide.wallpaper.R
 import com.sphara.slide.wallpaper.chowamr.ChoWamr
-import com.sphara.slide.wallpaper.mazdkan.MazdKan
-import com.sphara.slide.wallpaper.papilmos.PapilMos
-import com.sphara.slide.wallpaper.tadycib.TadyCib
+import com.sphara.slide.wallpaper.data.ImageFrame
 import com.sphara.slide.wallpaper.ui.theme.WallpaperTheme
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
@@ -194,32 +191,32 @@ class PatyCate : ComponentActivity() {
                                     contentScale = ContentScale.Companion.FillBounds
                                 )
 
-                                Row(
-                                    verticalAlignment = Alignment.Companion.CenterVertically,
-                                    modifier = Modifier.Companion
-                                        .fillMaxSize()
-                                        .clickable {
-                                            context.startActivity(
-                                                Intent(
-                                                    context,
-                                                    PapilMos::class.java
-                                                )
-                                            )
-                                        }
-                                ) {
-
-                                    Image(
-                                        painter = painterResource(R.drawable.ic_naozhong),
-                                        "", modifier = Modifier.Companion.padding(start = 12.dp)
-                                    )
-
-                                    Text(
-                                        "Scheduled Change",
-                                        color = Color.Companion.White,
-                                        modifier = Modifier.Companion.padding(start = 12.dp)
-                                    )
-
-                                }
+//                                Row(
+//                                    verticalAlignment = Alignment.Companion.CenterVertically,
+//                                    modifier = Modifier.Companion
+//                                        .fillMaxSize()
+//                                        .clickable {
+//                                            context.startActivity(
+//                                                Intent(
+//                                                    context,
+//                                                    PapilMos::class.java
+//                                                )
+//                                            )
+//                                        }
+//                                ) {
+//
+//                                    Image(
+//                                        painter = painterResource(R.drawable.ic_naozhong),
+//                                        "", modifier = Modifier.Companion.padding(start = 12.dp)
+//                                    )
+//
+//                                    Text(
+//                                        "Scheduled Change",
+//                                        color = Color.Companion.White,
+//                                        modifier = Modifier.Companion.padding(start = 12.dp)
+//                                    )
+//
+//                                }
                             }
                         }
 

