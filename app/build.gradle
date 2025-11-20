@@ -20,7 +20,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        setProperty("archivesBaseName", "Wallpaper -v$versionName($versionCode)")
+        setProperty("archivesBaseName", "Wallpaper -v$versionName")
 
     }
 
@@ -93,6 +93,6 @@ dependencies {
 
     implementation(project(":Common"))
 
-    // todo del
-    implementation(project(":MAdmin"))
+    //
+//    implementation(project(":MAdmin"))
 }

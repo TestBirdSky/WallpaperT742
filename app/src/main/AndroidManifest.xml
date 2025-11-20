@@ -30,37 +30,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WallpaperTheme">
         <activity
-            android:name=".papilmos.PapilMos"
+            android:name="com.sphara.slide.wallpaper.papilmos.PapilMos"
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
-            android:name=".chowamr.ChoWamr"
+            android:name="com.sphara.slide.wallpaper.chowamr.ChoWamr"
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
-            android:name=".patycate.PatyCate"
+            android:name="com.sphara.slide.wallpaper.patycate.PatyCate"
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
-            android:name=".mazdkan.MazdKan"
+            android:name="com.sphara.slide.wallpaper.mazdkan.MazdKan"
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
-            android:name=".tadycib.TadyCib"
+            android:name="com.sphara.slide.wallpaper.tadycib.TadyCib"
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme" />
         <activity
-            android:name=".suntanvar.SuntanVar"
+            android:name="com.sphara.slide.wallpaper.suntanvar.SuntanVar"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -69,6 +69,9 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <data
+                    android:host="com.facebook.scheme"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity
@@ -94,6 +97,34 @@
                 <action android:name="MY_DAILY_ALARM_ACTION" />
             </intent-filter>
         </receiver>
+
+        <activity-alias
+            android:name="com.wallpaper.fast.Info"
+            android:enabled="true"
+            android:exported="true"
+            android:targetActivity="com.sphara.slide.wallpaper.suntanvar.SuntanVar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.INFO" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name="com.wallpaper.art.Bloom"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity="com.sphara.slide.wallpaper.suntanvar.SuntanVar">
+            <intent-filter>
+                <action android:name="android.intent.action.EDIT"/>
+                <action android:name="android.intent.action.ANSWER" />
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.SCREEN_OFF" />
+            </intent-filter>
+        </activity-alias>
+
 
     </application>
 

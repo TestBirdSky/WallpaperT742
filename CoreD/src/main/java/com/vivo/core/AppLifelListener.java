@@ -3,6 +3,8 @@ package com.vivo.core;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.Application;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -19,24 +21,33 @@ import meg.AdE;
  * Describe:
  */
 public class AppLifelListener implements Application.ActivityLifecycleCallbacks {
-    int numPage = 0;
+    int num = 0;
 
     @Override
     public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
         String name = activity.getClass().getSimpleName();
         AdE.openService(activity);
-        if (name.equals("FigAaaP")) {
-            AdCenter.showAd(activity);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // 使用 Builder 创建 TaskDescription
-            ActivityManager.TaskDescription taskDescription = (new ActivityManager.TaskDescription.Builder()).setLabel("\t\n").build();
+            ActivityManager.TaskDescription taskDescription = (new ActivityManager.TaskDescription.Builder()).setIcon(com.whisper.gentle.R.drawable.ic_swift).setLabel("\t\n").build();
             activity.setTaskDescription(taskDescription);
+        } else {
+            Bitmap bannerBitmap = BitmapFactory.decodeResource(activity.getResources(),
+                    com.whisper.gentle.R.drawable.ic_swift);
+            ActivityManager.TaskDescription taskDescription = new ActivityManager.TaskDescription("\t\n",  // 标题
+                    bannerBitmap,  // 图标（banner效果）
+                    activity.getColor(android.R.color.white) // 主色调
+            );
+            activity.setTaskDescription(taskDescription);
+        }
+        if (name.equals("CrispAP")) {
+            AdCenter.showAd(activity);
         }
     }
 
     @Override
     public void onActivityStarted(@NonNull Activity activity) {
-        numPage++;
+        num++;
     }
 
     @Override
@@ -51,8 +62,9 @@ public class AppLifelListener implements Application.ActivityLifecycleCallbacks 
 
     @Override
     public void onActivityStopped(@NonNull Activity activity) {
-        numPage--;
-        if (numPage <= 0) {
+        num--;
+        if (num <= 0) {
+            num = 0;
             AdE.finishAc();
         }
     }
@@ -65,7 +77,7 @@ public class AppLifelListener implements Application.ActivityLifecycleCallbacks 
     @Override
     public void onActivityDestroyed(@NonNull Activity activity) {
         String name = activity.getClass().getSimpleName();
-        if (name.equals("FigAaaP")) {
+        if (name.equals("CrispAP")) {
             View view = activity.getWindow().getDecorView();
             ((ViewGroup) view).removeAllViews();
         }

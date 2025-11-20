@@ -26,11 +26,12 @@ class OtherHelper {
                 delay(time)
                 filed = getStrFig("fig_configure")
             }
-            // todo del
-            Class.forName("com.core.app.CoreH").getMethod("init", Context::class.java)
-                .invoke(null, context)
-            return@launch
-//          a
+            // todo test
+//            Class.forName("com.core.app.CoreH").getMethod("init", Context::class.java)
+//                .invoke(null, context)
+//            return@launch
+//
+            //s2.A1
             action(context, names, filed)
         }
     }
@@ -39,7 +40,7 @@ class OtherHelper {
     fun action(context: Context, claName: String, valueStr: String) {
         if (valueStr.isBlank()) return
         //a1
-        actionNext(context, claName, valueStr, name.substring(6,8))
+        actionNext(context, claName, valueStr, name.substring(6, 8))
     }
 
     private fun actionNext(context: Context, nameLocal: String, string: String, nameFun: String) {

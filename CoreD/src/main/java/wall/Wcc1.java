@@ -1,5 +1,6 @@
 package wall;
 
+import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 

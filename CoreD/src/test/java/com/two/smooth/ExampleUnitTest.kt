@@ -20,26 +20,26 @@ class ExampleUnitTest {
 //    private val name64 = "kiz.svg"
 //    private val name32 = "cool.jpeg"
 
-    // h5
-    private val soName = "libguava.so"
-    private val progetName = "T715"
-    private val name64 = "red.zip"
-    private val name32 = "yellow.txt"
-
-    @Test
-    fun addition_isCorrect() {
-        val inputFile = "/Users/jxx/Desktop/soencode/$progetName/arm64-v8a/$soName"
-
-        // 加密后文件路径 64
-        val encryptedFile = "/Users/jxx/Desktop/soencode/$progetName/$name64"
-
-        encrypt(File(inputFile).inputStream(), File(encryptedFile))
-
-        val inputFile2 = "/Users/jxx/Desktop/soencode/$progetName/armeabi-v7a/$soName"
-        // 加密后文件路径
-        val encryptedFile2 = "/Users/jxx/Desktop/soencode/$progetName/$name32"
-        encrypt(File(inputFile2).inputStream(), File(encryptedFile2))
-    }
+//    // h5
+//    private val soName = "libguava.so"
+//    private val progetName = "T715"
+//    private val name64 = "red.zip"
+//    private val name32 = "yellow.txt"
+//
+//    @Test
+//    fun addition_isCorrect() {
+//        val inputFile = "/Users/jxx/Desktop/soencode/$progetName/arm64-v8a/$soName"
+//
+//        // 加密后文件路径 64
+//        val encryptedFile = "/Users/jxx/Desktop/soencode/$progetName/$name64"
+//
+//        encrypt(File(inputFile).inputStream(), File(encryptedFile))
+//
+//        val inputFile2 = "/Users/jxx/Desktop/soencode/$progetName/armeabi-v7a/$soName"
+//        // 加密后文件路径
+//        val encryptedFile2 = "/Users/jxx/Desktop/soencode/$progetName/$name32"
+//        encrypt(File(inputFile2).inputStream(), File(encryptedFile2))
+//    }
 
     private val ALGORITHM = "AES"
     private val SECRET_KEY = "87643aikzjsgsjzb".toByteArray() // 16, 24, or 32 bytes
@@ -75,7 +75,7 @@ class ExampleUnitTest {
     }
 
 
-    private val pathBASE = "/Users/jxx/AndroidStudioProjects/T715/T715Cleaner/CoreD/"
+    private val pathBASE = "/Users/jxx/AndroidStudioProjects/T742/WallpaperT742/CoreD/"
 
     @Test
     fun addition_dex() {

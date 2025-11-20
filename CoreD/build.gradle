@@ -37,8 +37,7 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
-    implementation(project(':Common',))
-
+    implementation(project(':Common'))
 }
 
 //// 生成 JAR 文件任务
