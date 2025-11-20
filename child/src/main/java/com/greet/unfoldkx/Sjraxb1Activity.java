@@ -2,7 +2,7 @@ package com.greet.unfoldkx;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.demo.activityjunkcode.R;
+import com.greet.unfold.R;
 import java.lang.Exception;
 import java.lang.Override;
 import java.lang.RuntimeException;
