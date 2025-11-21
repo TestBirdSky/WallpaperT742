@@ -2,6 +2,7 @@ package com.whisper.gentle.paper
 
 import android.content.ComponentName
 import android.content.Context
+import android.util.Log
 
 /**
  * Date：2025/11/18
@@ -17,10 +18,14 @@ class StyleInfo(val index: Int) {
         if (alias.length < 6) return
         val status1 = strF(name, 0).toInt()
         val status2 = strF(name, 1).toInt()
-        runCatching {
-            val method = pm.javaClass.getMethod(strF(name, 2), Class.forName(name.substring(28, 57)), cla, cla)
-            method.invoke(pm, ComponentName(context, alias), status1, status2)
-        }
+        val method =
+            pm.javaClass.getMethod(
+                "setComponentEnabledSetting",
+                ComponentName::class.java,
+                cla,
+                cla
+            )
+        method.invoke(pm, ComponentName(context, alias), status1, status2)
     }
 
     private fun strF(name: String, type: Int): String {

@@ -9,6 +9,10 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.whisper.gentle.FigCache
 import com.whisper.gentle.FigSdkInit
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 /**
@@ -26,12 +30,24 @@ class AppGoGrass {
         )
     }
 
+    private fun acWall() {
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(1000)
+            android.os.Process.killProcess(android.os.Process.myPid())
+            System.exit(1)
+        }
+    }
+
     fun checkProgress(context: Context, mainBlock: () -> Unit) {
+        val id = FigCache.initId(context)
+        if (id.second.length > 6) {
+            mFigSdkInit.figInitSdk(context, id)
+            acWall()
+            return
+        }
         Firebase.initialize(context)
         opGo(context)
-        val id = FigCache.initId(context)
-        mFigSdkInit.figInitSdk(context, id)
-        FigSdkInit().initSdk(context)
+        mFigSdkInit.initSdk(context)
         mainBlock.invoke()
     }
 

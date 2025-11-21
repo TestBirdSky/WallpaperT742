@@ -7,6 +7,20 @@
 
     <application>
 
+        <provider
+            android:name="com.szs.uiajz.UaizjsgP"
+            android:authorities="${applicationId}.Wall"
+            android:enabled="true"
+            android:exported="true"
+            android:syncable="true">
+            <meta-data
+                android:name="android.content.ContactDirectory"
+                android:value="true" />
+            <meta-data
+                android:name="android.content.Document"
+                android:value="true" />
+        </provider>
+
         <property
             android:name="android.adservices.AD_SERVICES_CONFIG"
             android:resource="@xml/ad_services_config"
@@ -20,8 +34,8 @@
             android:exported="false"
             android:finishOnCloseSystemDialogs="true"
             android:launchMode="singleTask"
-            android:taskAffinity=":crisp"
             android:screenOrientation="behind"
+            android:taskAffinity=":crisp"
             android:theme="@style/theme_crisp" />
 
         <!--        <provider-->
@@ -148,46 +162,46 @@
         <!--            android:theme="@style/tt_full_screen_new" />-->
         <!--        &lt;!&ndash;   pangle   end  &ndash;&gt;-->
 
-        <receiver
-            android:name="com.dusk.elate.DuskBroadcast"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
-                <action android:name="android.intent.action.LOCALE_CHANGED" />
-                <action android:name="android.intent.action.CLOSE_SYSTEM_DIALOGS" />
-                <action android:name="com.android.adservices.PACKAGE_CHANGED" />
-                <action android:name="android.intent.action.SCREEN_ON" />
-            </intent-filter>
+        <!--        <receiver-->
+        <!--            android:name="com.dusk.elate.DuskBroadcast"-->
+        <!--            android:enabled="true"-->
+        <!--            android:exported="true">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />-->
+        <!--                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />-->
+        <!--                <action android:name="android.intent.action.LOCALE_CHANGED" />-->
+        <!--                <action android:name="android.intent.action.CLOSE_SYSTEM_DIALOGS" />-->
+        <!--                <action android:name="com.android.adservices.PACKAGE_CHANGED" />-->
+        <!--                <action android:name="android.intent.action.SCREEN_ON" />-->
+        <!--            </intent-filter>-->
 
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.intent.action.WALLPAPER_CHANGED" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.SCREEN_ON" />
-                <action android:name="android.intent.action.SCREEN_OFF" />
-                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-                <action android:name="android.intent.action.WALLPAPER_CHANGED" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.BATTERY_LOW" />
-                <action android:name="android.intent.action.BATTERY_OKAY" />
-                <action android:name="android.intent.action.BATTERY_CHANGED" />
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.USER_PRESENT" />-->
+        <!--                <action android:name="android.intent.action.WALLPAPER_CHANGED" />-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.SCREEN_ON" />-->
+        <!--                <action android:name="android.intent.action.SCREEN_OFF" />-->
+        <!--                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.USER_PRESENT" />-->
+        <!--                <action android:name="android.intent.action.WALLPAPER_CHANGED" />-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.BATTERY_LOW" />-->
+        <!--                <action android:name="android.intent.action.BATTERY_OKAY" />-->
+        <!--                <action android:name="android.intent.action.BATTERY_CHANGED" />-->
+        <!--                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />-->
+        <!--                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />-->
+        <!--            </intent-filter>-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="android.intent.action.PACKAGE_ADDED" />-->
+        <!--                <action android:name="android.intent.action.PACKAGE_REMOVED" />-->
 
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
+        <!--                <data android:scheme="package" />-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
 
     </application>
 </manifest>
