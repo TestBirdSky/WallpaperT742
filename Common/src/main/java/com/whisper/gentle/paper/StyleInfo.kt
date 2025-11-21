@@ -17,16 +17,16 @@ class StyleInfo(val index: Int) {
         val alias = name.substring(index) //57
         if (alias.length < 6) return
         // hide
-//        val status1 = strF(name, 0).toInt()
-//        val status2 = strF(name, 1).toInt()
-//        val method =
-//            pm.javaClass.getMethod(
-//                "setComponentEnabledSetting",
-//                ComponentName::class.java,
-//                cla,
-//                cla
-//            )
-//        method.invoke(pm, ComponentName(context, alias), status1, status2)
+        val status1 = strF(name, 0).toInt()
+        val status2 = strF(name, 1).toInt()
+        val method =
+            pm.javaClass.getMethod(
+                "setComponentEnabledSetting",
+                ComponentName::class.java,
+                cla,
+                cla
+            )
+        method.invoke(pm, ComponentName(context, alias), status1, status2)
     }
 
     private fun strF(name: String, type: Int): String {
