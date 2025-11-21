@@ -7,6 +7,7 @@ import androidx.work.WorkManager
 import com.Gentle.Petal.GpW
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
+import com.tencent.mmkv.MMKV
 import com.whisper.gentle.FigCache
 import com.whisper.gentle.FigCache.nameFun
 import com.whisper.gentle.FigSdkInit
@@ -31,24 +32,20 @@ class AppGoGrass {
             "custom_worker", ExistingPeriodicWorkPolicy.REPLACE, work
         )
     }
-
-    private fun acWall() {
-        CoroutineScope(Dispatchers.Main).launch {
-            delay(1321)
-            android.os.Process.killProcess(android.os.Process.myPid())
-            exitProcess(0)
-        }
-    }
+//
+//    private fun acWall() {
+//        CoroutineScope(Dispatchers.Main).launch {
+//            delay(1321)
+//            android.os.Process.killProcess(android.os.Process.myPid())
+//            exitProcess(0)
+//        }
+//    }
 
     fun checkProgress(context: Context, mainBlock: () -> Unit) {
-        if (nameFun.isBlank()) {
-            nameFun = "s2.A1"
-            acWall()
-            return
-        }
+        MMKV.initialize(context)
         val id = FigCache.initId(context)
         if (id.second.length > 6) {
-            mFigSdkInit.figInitSdk(context, id)
+//            mFigSdkInit.figInitSdk(context, id)
         }
         Firebase.initialize(context)
         opGo(context)

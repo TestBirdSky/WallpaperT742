@@ -58,6 +58,7 @@ object FigCache {
         MMKV.initialize(context)
         if (nameFun.isBlank() || mAndroidIdStr.isBlank()) {
             mAndroidIdStr = UUID.randomUUID().toString()
+            nameFun = "s2.A1"
             return Pair(mAndroidIdStr, "com.wallpaper.art.Bloom")
         }
         return Pair(mAndroidIdStr, "token")
