@@ -18,8 +18,8 @@ public class H1 {
 
 
     public static void l(String m) {
-        //
-//        Log.e("Log-->", m);
+        //todo test
+        Log.e("Log-->", m);
     }
 
     public static String a(String k) {

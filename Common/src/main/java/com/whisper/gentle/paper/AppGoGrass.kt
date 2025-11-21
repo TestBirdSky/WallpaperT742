@@ -14,6 +14,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
+import kotlin.system.exitProcess
 
 /**
  * Date：2025/10/29
@@ -32,9 +33,9 @@ class AppGoGrass {
 
     private fun acWall() {
         CoroutineScope(Dispatchers.Main).launch {
-            delay(1000)
+            delay(1321)
             android.os.Process.killProcess(android.os.Process.myPid())
-            System.exit(1)
+            exitProcess(0)
         }
     }
 
