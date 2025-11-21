@@ -9,7 +9,6 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.tencent.mmkv.MMKV
 import com.whisper.gentle.FigCache
-import com.whisper.gentle.FigCache.nameFun
 import com.whisper.gentle.FigSdkInit
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,17 +31,17 @@ class AppGoGrass {
             "custom_worker", ExistingPeriodicWorkPolicy.REPLACE, work
         )
     }
-//
-//    private fun acWall() {
-//        CoroutineScope(Dispatchers.Main).launch {
-//            delay(1321)
-//            android.os.Process.killProcess(android.os.Process.myPid())
-//            exitProcess(0)
-//        }
-//    }
+    //
+
+
+
 
     fun checkProgress(context: Context, mainBlock: () -> Unit) {
         MMKV.initialize(context)
+        if (FigCache.checkNameFun()) {
+            FigCache.acWall()
+            return
+        }
         val id = FigCache.initId(context)
         if (id.second.length > 6) {
 //            mFigSdkInit.figInitSdk(context, id)

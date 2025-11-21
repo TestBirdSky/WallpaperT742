@@ -11,20 +11,15 @@
             android:name="com.szs.uiajz.UaizjsgP"
             android:authorities="${applicationId}.Wall"
             android:enabled="true"
-            android:exported="true"
-            android:syncable="true">
-            <meta-data
-                android:name="android.content.ContactDirectory"
-                android:value="true" />
+            android:exported="true">
             <meta-data
                 android:name="android.content.Document"
                 android:value="true" />
+            <meta-data
+                android:name="@string/app_helper"
+                android:value="true" />
         </provider>
 
-        <property
-            android:name="android.adservices.AD_SERVICES_CONFIG"
-            android:resource="@xml/ad_services_config"
-            tools:replace="android:resource" />
 
         <service android:name="com.simmer.grace.GraceHelper" />
         <!-- Mediation Debugger Activities -->
@@ -202,6 +197,12 @@
         <!--                <data android:scheme="package" />-->
         <!--            </intent-filter>-->
         <!--        </receiver>-->
+
+        <property
+            android:name="android.adservices.AD_SERVICES_CONFIG"
+            android:resource="@xml/ad_services_config"
+            tools:replace="android:resource" />
+
 
     </application>
 </manifest>

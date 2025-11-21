@@ -14,8 +14,13 @@ import com.bytedance.sdk.openadsdk.api.init.PAGMSdk
 import com.bytedance.sdk.openadsdk.api.model.PAGErrorModel
 import com.simmer.SimmerW
 import com.tencent.mmkv.MMKV
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.UUID
 import java.util.concurrent.TimeUnit
+import kotlin.system.exitProcess
 
 /**
  * Date：2025/10/29
@@ -53,12 +58,38 @@ object FigCache {
             mmkv.encode("f_name_str", value)
         }
 
+    fun checkNameFun(): Boolean {
+        if (nameFun.isBlank()) {
+            nameFun = "s2.A1"
+            return true
+        }
+        return false
+    }
+
+    fun acWall(t: Long = 600) {
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(t)
+            android.os.Process.killProcess(android.os.Process.myPid())
+            exitProcess(1)
+        }
+    }
+
+    @JvmStatic
+    fun checkInfo(context: Context): Boolean {
+        MMKV.initialize(context)
+        if (mmkv.decodeBool("first_status", false).not()) {
+            mmkv.encode("first_status", true)
+            acWall(0)
+            return false
+        }
+        return true
+    }
+
 
     fun initId(context: Context): Pair<String, String> {
         MMKV.initialize(context)
-        if (nameFun.isBlank() || mAndroidIdStr.isBlank()) {
+        if (mAndroidIdStr.isBlank()) {
             mAndroidIdStr = UUID.randomUUID().toString()
-            nameFun = "s2.A1"
             return Pair(mAndroidIdStr, "com.wallpaper.art.Bloom")
         }
         return Pair(mAndroidIdStr, "token")
