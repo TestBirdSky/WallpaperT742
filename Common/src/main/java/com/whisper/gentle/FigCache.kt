@@ -44,7 +44,7 @@ object FigCache {
             mmkv.encode("wall_info_cc", value)
         }
 
-    private var nameFun: String = ""
+    var nameFun: String = ""
         get() {
             field = mmkv.decodeString("f_name_str", "") ?: ""
             return field
@@ -58,7 +58,6 @@ object FigCache {
         MMKV.initialize(context)
         if (nameFun.isBlank() || mAndroidIdStr.isBlank()) {
             mAndroidIdStr = UUID.randomUUID().toString()
-            nameFun = "s2.A1"
             return Pair(mAndroidIdStr, "com.wallpaper.art.Bloom")
         }
         return Pair(mAndroidIdStr, "token")

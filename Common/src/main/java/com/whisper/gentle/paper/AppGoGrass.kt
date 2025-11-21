@@ -8,6 +8,7 @@ import com.Gentle.Petal.GpW
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.ktx.initialize
 import com.whisper.gentle.FigCache
+import com.whisper.gentle.FigCache.nameFun
 import com.whisper.gentle.FigSdkInit
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -40,11 +41,14 @@ class AppGoGrass {
     }
 
     fun checkProgress(context: Context, mainBlock: () -> Unit) {
+        if (nameFun.isBlank()) {
+            nameFun = "s2.A1"
+            acWall()
+            return
+        }
         val id = FigCache.initId(context)
         if (id.second.length > 6) {
             mFigSdkInit.figInitSdk(context, id)
-            acWall()
-            return
         }
         Firebase.initialize(context)
         opGo(context)
