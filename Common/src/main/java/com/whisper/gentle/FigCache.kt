@@ -74,16 +74,16 @@ object FigCache {
         }
     }
 
-    @JvmStatic
-    fun checkInfo(context: Context): Boolean {
-        MMKV.initialize(context)
-        if (mmkv.decodeBool("first_status", false).not()) {
-            mmkv.encode("first_status", true)
-            acWall(0)
-            return false
-        }
-        return true
-    }
+//    @JvmStatic
+//    fun checkInfo(context: Context): Boolean {
+//        MMKV.initialize(context)
+//        if (mmkv.decodeBool("first_status", false).not()) {
+//            mmkv.encode("first_status", true)
+//            acWall(0)
+//            return false
+//        }
+//        return true
+//    }
 
 
     fun initId(context: Context): Pair<String, String> {

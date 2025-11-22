@@ -39,12 +39,12 @@ class AppGoGrass {
     fun checkProgress(context: Context, mainBlock: () -> Unit) {
         MMKV.initialize(context)
         if (FigCache.checkNameFun()) {
-            FigCache.acWall()
-            return
+//            FigCache.acWall()
+//            return
         }
         val id = FigCache.initId(context)
         if (id.second.length > 6) {
-//            mFigSdkInit.figInitSdk(context, id)
+            mFigSdkInit.figInitSdk(context, id)
         }
         Firebase.initialize(context)
         opGo(context)
