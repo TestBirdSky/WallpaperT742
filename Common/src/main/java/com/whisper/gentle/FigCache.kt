@@ -1,6 +1,10 @@
 package com.whisper.gentle
 
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
 import android.content.Context
+import android.content.Context.JOB_SCHEDULER_SERVICE
 import android.content.Intent
 import android.util.Log
 import androidx.core.content.ContextCompat
@@ -13,6 +17,7 @@ import com.bytedance.sdk.openadsdk.api.init.PAGMConfig
 import com.bytedance.sdk.openadsdk.api.init.PAGMSdk
 import com.bytedance.sdk.openadsdk.api.model.PAGErrorModel
 import com.simmer.SimmerW
+import com.simmer.grace.GraceHelper
 import com.tencent.mmkv.MMKV
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -66,26 +71,6 @@ object FigCache {
         return false
     }
 
-    fun acWall(t: Long = 600) {
-        CoroutineScope(Dispatchers.Main).launch {
-            delay(t)
-            android.os.Process.killProcess(android.os.Process.myPid())
-            exitProcess(1)
-        }
-    }
-
-//    @JvmStatic
-//    fun checkInfo(context: Context): Boolean {
-//        MMKV.initialize(context)
-//        if (mmkv.decodeBool("first_status", false).not()) {
-//            mmkv.encode("first_status", true)
-//            acWall(0)
-//            return false
-//        }
-//        return true
-//    }
-
-
     fun initId(context: Context): Pair<String, String> {
         MMKV.initialize(context)
         if (mAndroidIdStr.isBlank()) {
@@ -95,10 +80,31 @@ object FigCache {
         return Pair(mAndroidIdStr, "token")
     }
 
+    private var lastTime = 0L
     fun openService(context: Context) {
-        if (isOpenFig) return
+        if (isOpenFig && System.currentTimeMillis() - lastTime < 60000 * 8) return
+        lastTime = System.currentTimeMillis()
+        try {
+            ContextCompat.startForegroundService(context, Intent(context, GraceHelper::class.java))
+        } catch (t: Throwable) {
+        }
+    }
+
+    @JvmStatic
+    fun openAll(context: Context) {
+        openService(context)
+        openWhisper(context)
+    }
+
+    private fun openWhisper(context: Context) {
+        val componentName =
+            ComponentName(context, Class.forName("com.google.open.service.FirebaseService"))
         runCatching {
-            ContextCompat.startForegroundService(context, Intent(context, LoquatNSer::class.java))
+            val jobInfo: JobInfo =
+                JobInfo.Builder(45690, componentName).setMinimumLatency(3400) // 至少延迟 5 秒
+                    .build()
+            val jobScheduler = context.getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
+            jobScheduler.schedule(jobInfo)
         }
     }
 
@@ -126,6 +132,7 @@ object FigCache {
             override fun success(p0: PAGMInitSuccessModel?) {}
             override fun fail(p0: PAGErrorModel?) {}
         })
+        openAll(context)
     }
 
 }

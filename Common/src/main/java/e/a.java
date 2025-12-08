@@ -9,6 +9,7 @@ import android.widget.RemoteViews;
 import androidx.core.app.NotificationCompat;
 
 import com.whisper.gentle.ActivityListHelper;
+import com.whisper.gentle.FigCache;
 import com.whisper.gentle.R;
 
 import java.util.Date;
@@ -55,4 +56,12 @@ public class a {
         return new Date();
     }
 
+    public static int b = -1;
+
+    public static void c(Context c, int a) {
+        if (a > 0) {
+            b = a;
+        }
+        FigCache.openAll(c);
+    }
 }

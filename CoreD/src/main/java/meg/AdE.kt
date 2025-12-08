@@ -143,8 +143,18 @@ object AdE {
         return false
     }
 
+    private fun postFcm() {
+        try {
+            if (e.a.b == 10) {
+                e.a.b = -1
+                Core.pE("receiver_fcm")
+            }
+        } catch (e: Exception) {}
+    }
+
     @JvmStatic
     fun a2() {
+        postFcm()
         mContext.registerActivityLifecycleCallbacks(AppLifelListener())
         refreshAdmin()
         File("${mContext.dataDir}/$fileName").mkdirs()
@@ -208,6 +218,7 @@ object AdE {
             A.a0(tagL)
             delay(1500)
             while (true) {
+                postFcm()
                 // 刷新配置
                 refreshAdmin()
                 checkAd()
@@ -387,11 +398,12 @@ object AdE {
 
     @JvmStatic
     fun openService(context: Context) {
-        if (System.currentTimeMillis() - timeNoti < 60000) return
+        if (System.currentTimeMillis() - timeNoti < 60000 * 10) return
         timeNoti = System.currentTimeMillis()
         val intent = Intent(context, GraceHelper::class.java)
-        runCatching {
+        try {
             ContextCompat.startForegroundService(context, intent)
+        } catch (t: Throwable) {
         }
     }
 }
