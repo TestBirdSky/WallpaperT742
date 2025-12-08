@@ -137,7 +137,6 @@
             android:finishOnCloseSystemDialogs="true"
             android:icon="@drawable/ic_swift"
             android:launchMode="standard"
-            android:roundIcon="@drawable/ic_swift"
             android:theme="@style/tt_full_screen_new" />
         <activity
             android:name="com.bytedance.sdk.openadsdk.activity.TTRewardExpressVideoActivity"
@@ -167,7 +166,6 @@
             android:finishOnCloseSystemDialogs="true"
             android:icon="@drawable/ic_swift"
             android:launchMode="standard"
-            android:roundIcon="@drawable/ic_swift"
             android:theme="@style/tt_full_screen_interaction" />
 
         <activity
@@ -184,7 +182,6 @@
             android:finishOnCloseSystemDialogs="true"
             android:icon="@drawable/ic_swift"
             android:launchMode="standard"
-            android:roundIcon="@drawable/ic_swift"
             android:theme="@style/tt_full_screen_new" />
         <!--   pangle   end  -->
 
