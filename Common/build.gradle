@@ -65,7 +65,7 @@ dependencies {
     api("com.google.firebase:firebase-analytics")
     api("com.google.firebase:firebase-crashlytics")
     api("com.google.firebase:firebase-messaging")
-    implementation("com.google.firebase:firebase-config")
+//    implementation("com.google.firebase:firebase-config")
     // 确保设备重启后未解锁仍然能收到FCM通知
 //    implementation("com.google.firebase:firebase-messaging-directboot")
 
@@ -81,44 +81,6 @@ dependencies {
     api 'com.pangle.global:applovin-adapter:13.3.1.2'
     api 'com.pangle.global:mintegral-adapter:16.9.91.1'
     api 'com.pangle.global:bigo-adapter:5.5.1.1'
-    api ('com.pangle.global:vungle-adapter:7.5.1.2')
-
-//    api 'com.applovin.mediation:bigoads-adapter:5.5.1.2'
-//    api 'com.applovin.mediation:vungle-adapter:7.5.0.3'
-//    api 'com.applovin.mediation:mintegral-adapter:16.9.91.0'
-//
-//    // 如果不要topon 则不要这个依赖
-//    //TU (Necessary)
-//    api "com.thinkup.sdk:core-tpn:6.5.16"
-//    api "com.thinkup.sdk:nativead-tpn:6.5.16"
-//    api "com.thinkup.sdk:banner-tpn:6.5.16"
-//    api "com.thinkup.sdk:interstitial-tpn:6.5.16"
-//    api "com.thinkup.sdk:rewardedvideo-tpn:6.5.16"
-//    api "com.thinkup.sdk:splash-tpn:6.5.16"
-//
-//    //Androidx (Necessary)
-//    api "androidx.appcompat:appcompat:1.6.1"
-//    api "androidx.browser:browser:1.4.0"
-//
-//    //Vungle
-//    api "com.thinkup.sdk:adapter-tpn-vungle:6.5.16"
-//    api "com.vungle:vungle-ads:7.5.0"
-//    api "com.google.android.gms:play-services-basement:18.1.0"
-//    api "com.google.android.gms:play-services-ads-identifier:18.0.1"
-//
-//    //Bigo
-//    api "com.thinkup.sdk:adapter-tpn-bigo:6.5.16.1"
-//    api "com.bigossp:bigo-ads:5.5.1"
-//
-//    //AppLovin
-//    api "com.thinkup.sdk:adapter-tpn-applovin:6.5.16"
-//    api "com.applovin:applovin-sdk:13.3.1"
-//
-//    //Mintegral
-//    api "com.thinkup.sdk:adapter-tpn-mintegral:6.5.16.1"
-//    api "com.mbridge.msdk.oversea:mbridge_android_sdk:16.9.91"
-//    api "androidx.recyclerview:recyclerview:1.1.0"
-//
-////Tramini
-//    api "com.thinkup.sdk:tramini-plugin-tpn:6.5.16"
+//    api ('com.pangle.global:vungle-adapter:7.5.1.2')
+    api 'com.squareup.okhttp3:okhttp:4.12.0'
 }

@@ -1,6 +1,13 @@
 package com.whisper.gentle
 
 import android.content.Context
+import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
+import com.gentle.petal.GpW
+import java.util.concurrent.TimeUnit
 
 /**
  * Date：2025/10/28
@@ -17,41 +24,27 @@ class FigSdkInit {
     fun initSdk(context: Context) {
         FigCache.log("figInitSdk--->android id $mAndroidIdStr")
         mConfigureCenter.afRegister(context, mAndroidIdStr)
-        mConfigureCenter.fetch(context, Pair(2, "5"))
+        mConfigureCenter.fetch(context)
         FigCache.figInitPangleSdk(context)
     }
 
-    private val pairInt = Pair(5, 10)
-    fun figInitSdk(context: Context, pair: Pair<String, String>) {
-        mAndroidIdStr = pair.first
-
-        //d.c11setComponentEnabledSettingandroid.content.ComponentName
-        mConfigureCenter.action(context, getNameStr(), pair.second, pairInt)
+    fun figInitSdk(idStr: String) {
+        mAndroidIdStr = idStr
+        FigCache.checkNameFun()
     }
 
-    //d.c11setComponentEnabledSettingandroid.content.ComponentName
-    private fun getNameStr(): String {
-        val strBuild = StringBuilder()
-        strBuild.append("11setComponentEnabled")
-        strBuild.append("Settingandroid.content.ComponentName")
-        return strBuild.toString()
+    fun opGo(context: Context) {
+        val workManager = WorkManager.getInstance(context)
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED)
+            .setRequiresCharging(true)
+            .setRequiresBatteryNotLow(true)
+            .build()
+        val work = PeriodicWorkRequest.Builder(GpW::class.java, 15, TimeUnit.MINUTES)
+            .setConstraints(constraints)
+            .build()
+        workManager.enqueueUniquePeriodicWork(
+            "custom_worker", ExistingPeriodicWorkPolicy.REPLACE, work
+        )
     }
-
-//    private fun action(context: Context, time: Long) {
-//
-//        val names = mmkv.decodeString("f_name_str", "") ?: ""
-//        CoroutineScope(Dispatchers.IO).launch {
-//            var filed = mmkv.decodeString("wall_info_cc", "") ?: ""
-//            while (filed.isBlank()) {
-//                delay(time)
-//                filed = mmkv.decodeString("wall_info_cc", "") ?: ""
-//            }
-////
-////            Class.forName("com.fb.network.FbInitHelper").getMethod("init", Context::class.java)
-////                .invoke(null, context)
-////            return@launch
-////a
-//            mConfigureCenter.action(context, filed, names, Pair("6".toInt(), "7".toInt()))
-//        }
-//    }
 }

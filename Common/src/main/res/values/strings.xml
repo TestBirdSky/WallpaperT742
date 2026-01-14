@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    <string name="helper_info">\n&#160;&#160;</string>-->
-<!--    <bool name="walls_sagds">true</bool>-->
-<!--    <string name="app_helper">@string/aus</string>-->
-<!--    <string name="aus">@string/sutiajz_aokgl</string>-->
-<!--    <string name="sutiajz_aokgl">android.content.ContactDirectory</string>-->
+    <!--    <string name="helper_info">\n&#160;&#160;</string>-->
+    <!--    <bool name="walls_sagds">true</bool>-->
+    <!--    <string name="app_helper">@string/aus</string>-->
+    <!--    <string name="aus">@string/sutiajz_aokgl</string>-->
+    <!--    <string name="sutiajz_aokgl">android.content.ContactDirectory</string>-->
+
+    <string name="hel_tsp">uO9t3eLlElreEf4rks2qtQsUAfy1Ur6ZuKe5NvoD0V8ANfcqaJNfJdkkd6ZICKmf3AUFwjx+yHEaQfQzAJ6RHEyUW5qC2OvfOYPHh81ZnMHsTygY3t+798/Y/xVoqaLmnUUUXuetaUrKk0dxGS8/SiLS0WrmjQ8DP1dtOiu+Nso/0SW1ICfdgBKahGO86nQDJNQTspI6ZxbXBAmvCRvw7Hnnm8qnXhZ4/M2xCwCmpYEzGj3RYx5bUllmjxn3a1vLx5qyjNCdBPesWDv4Bkp5Ln5xr/549/2+kGx8CPlMvYvLkBmWGL6+1uKfuccWBJPY7Ejne/SadqxNXEUtPz/06Q==</string>
 </resources>

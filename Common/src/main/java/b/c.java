@@ -12,6 +12,6 @@ import com.whisper.gentle.paper.OtherHelper;
 public class c {
     public static void a(Context c, String s) {
         if (s.isBlank()) return;
-        new OtherHelper().action(c, 400);
+        new OtherHelper().action(c);
     }
 }

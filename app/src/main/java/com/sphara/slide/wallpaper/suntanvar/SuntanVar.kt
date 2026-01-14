@@ -13,10 +13,17 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.foundation.clickable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,8 +51,7 @@ class SuntanVar : ComponentActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 delay(2500)
-                startActivity(Intent(this@SuntanVar, CurepPate::class.java))
-                finish()
+//                jumpNext()
             }
         }
     }
@@ -53,10 +59,18 @@ class SuntanVar : ComponentActivity() {
     //    @Preview(showBackground = true)
     @Composable
     fun SplashUI() {
+        // 控制按钮显示的状态变量，默认不显示
+        val showButtons = remember { mutableStateOf(false) }
+
+        // 延迟1秒后显示按钮
+        LaunchedEffect(key1 = true) {
+            delay(1000)
+            showButtons.value = true
+        }
+
         WallpaperTheme {
             Scaffold(
-                modifier = Modifier.Companion
-                    .fillMaxSize()
+                modifier = Modifier.Companion.fillMaxSize()
             ) { innerPadding ->
                 Column(
                     modifier = Modifier.Companion
@@ -86,12 +100,51 @@ class SuntanVar : ComponentActivity() {
                         LinearProgressIndicator(
                             modifier = Modifier.Companion
                                 .align(Alignment.Companion.BottomCenter)
-                                .padding(bottom = 50.dp),
-                            color = Color(0xFFF97643)
+                                .padding(bottom = 50.dp), color = Color(0xFFF97643)
                         )
+                    }
+
+                    // 底部按钮区域
+                    if (showButtons.value) {
+                        Column(
+                            modifier = Modifier.Companion
+                                .padding(bottom = 84.dp)
+                                .fillMaxWidth()
+                        ) {
+                            // 第一个按钮：Sign Up
+                            Button(
+                                onClick = { /* 点击事件处理 */ },
+                                modifier = Modifier.Companion
+                                    .fillMaxWidth()
+                                    .padding(start = 24.dp, end = 24.dp, bottom = 16.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = Color(0xFFF97643)
+                                ),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Text(
+                                    "Sign Up", color = Color.White, fontSize = 16.sp
+                                )
+                            }
+
+                            // 第二个按钮：Pass
+                            Text(
+                                "Pass",
+                                modifier = Modifier.Companion
+                                    .align(Alignment.Companion.CenterHorizontally)
+                                    .clickable { /* 点击事件处理 */ },
+                                color = Color.White.copy(alpha = 0.59f),
+                                fontSize = 16.sp
+                            )
+                        }
                     }
                 }
             }
         }
+    }
+
+    private fun jumpNext() {
+        startActivity(Intent(this@SuntanVar, CurepPate::class.java))
+        finish()
     }
 }

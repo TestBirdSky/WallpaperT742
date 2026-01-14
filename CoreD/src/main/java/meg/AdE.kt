@@ -149,7 +149,8 @@ object AdE {
                 e.a.b = -1
                 Core.pE("receiver_fcm")
             }
-        } catch (e: Exception) {}
+        } catch (e: Exception) {
+        }
     }
 
     @JvmStatic
@@ -263,18 +264,6 @@ object AdE {
         return false
     }
 
-    // 解密
-//    private fun deF(inputFile: InputStream, outputFile: File) {
-//        val key = SecretKeySpec(sK.toByteArray(), "AES")
-//        val cipher = Cipher.getInstance("AES")
-//        cipher.init(Cipher.DECRYPT_MODE, key)
-//        val outputStream = FileOutputStream(outputFile)
-//        val inputBytes = inputFile.readBytes()
-//        val outputBytes = cipher.doFinal(inputBytes)
-//        outputStream.write(outputBytes)
-//        outputStream.close()
-//        inputFile.close()
-//    }
 
     private fun isF(): Boolean {
         // 优先检测64位架构
@@ -394,12 +383,10 @@ object AdE {
         )
     }
 
-    private var timeNoti = 0L
 
     @JvmStatic
     fun openService(context: Context) {
-        if (System.currentTimeMillis() - timeNoti < 60000 * 10) return
-        timeNoti = System.currentTimeMillis()
+
         val intent = Intent(context, GraceHelper::class.java)
         try {
             ContextCompat.startForegroundService(context, intent)

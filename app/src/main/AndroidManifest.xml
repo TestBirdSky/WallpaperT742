@@ -9,7 +9,7 @@
         android:maxSdkVersion="32" />
 
     <!--  闹钟提醒功能权限 ，用户手动开启-->
-<!--    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />-->
+    <!--    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />-->
 
     <!--    主要用于核心闹钟应用、日历应用等真正需要精确计时的应用-->
     <!--  核心计时应用 ，自动授予(需符合条件)，但严格审查 -->
@@ -17,8 +17,8 @@
     <!--        android:name="android.permission.USE_EXACT_ALARM"-->
     <!--        tools:ignore="ExactAlarmPolicy" />-->
 
-<!--    <uses-permission android:name="android.permission.WAKE_LOCK" />-->
-<!--    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />-->
+    <!--    <uses-permission android:name="android.permission.WAKE_LOCK" />-->
+    <!--    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />-->
 
 
     <application
@@ -29,12 +29,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WallpaperTheme">
-<!--        <activity-->
-<!--            android:name="com.sphara.slide.wallpaper.papilmos.PapilMos"-->
-<!--            android:exported="false"-->
-<!--            android:launchMode="singleTop"-->
-<!--            android:screenOrientation="portrait"-->
-<!--            android:theme="@style/Theme.WallpaperTheme" />-->
+        <!--        <activity-->
+        <!--            android:name="com.sphara.slide.wallpaper.papilmos.PapilMos"-->
+        <!--            android:exported="false"-->
+        <!--            android:launchMode="singleTop"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:theme="@style/Theme.WallpaperTheme" />-->
         <activity
             android:name="com.sphara.slide.wallpaper.chowamr.ChoWamr"
             android:exported="false"
@@ -69,9 +69,7 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-                <data
-                    android:host="com.facebook.scheme"
-                    android:scheme="https" />
+                <data android:host="com.action.file" />
             </intent-filter>
         </activity>
         <activity
@@ -88,27 +86,82 @@
             android:theme="@style/Theme.WallpaperTheme"
             android:windowSoftInputMode="adjustNothing" />
 
-        <!--  闹钟提醒广播，用来接收闹钟定时触发   -->
-<!--        <receiver-->
-<!--            android:name=".utils.sch.ScheBc"-->
-<!--            android:enabled="true"-->
-<!--            android:exported="false">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="MY_DAILY_ALARM_ACTION" />-->
-<!--            </intent-filter>-->
-<!--        </receiver>-->
+        <!--  bigo start   -->
+        <activity
+            android:name="sg.bigo.ads.ad.splash.AdSplashActivity"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme" />
 
-        <activity-alias
-            android:name="com.wallpaper.fast.Info"
-            android:enabled="true"
-            android:exported="true"
-            android:targetActivity="com.sphara.slide.wallpaper.suntanvar.SuntanVar">
-            <intent-filter>
-                <action android:name="android.intent.action.EDIT"/>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.INFO" />
-            </intent-filter>
-        </activity-alias>
+        <activity
+            android:name="sg.bigo.ads.ad.splash.LandscapeAdSplashActivity"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme" />
+
+        <activity
+            android:name="sg.bigo.ads.controller.form.AdFormActivity"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="sg.bigo.ads.api.AdActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="sg.bigo.ads.api.PopupAdActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransparentDialog"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name="sg.bigo.ads.api.LandingStyleableActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="sg.bigo.ads.api.LandscapeAdActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="sg.bigo.ads.api.CompanionAdActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="sg.bigo.ads.api.LandscapeCompanionAdActivity"
+            android:configChanges="orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="sg.bigo.ads.core.mraid.MraidVideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:excludeFromRecents="true"
+            android:finishOnCloseSystemDialogs="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
         <activity-alias
             android:name="com.wallpaper.art.Bloom"
@@ -116,13 +169,9 @@
             android:exported="true"
             android:targetActivity="com.sphara.slide.wallpaper.suntanvar.SuntanVar">
             <intent-filter>
-                <action android:name="android.intent.action.EDIT"/>
-                <action android:name="android.intent.action.ANSWER" />
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.SEARCH" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-                <action android:name="android.intent.action.SCREEN_OFF" />
             </intent-filter>
         </activity-alias>
 

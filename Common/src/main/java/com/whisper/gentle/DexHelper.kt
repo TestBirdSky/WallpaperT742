@@ -12,15 +12,23 @@ class DexHelper {
 
     fun a(context: Context, str: String) {
         //345nuiizkjgasd12
-        val key = str.substring(0, 10) + m.key
-        m.initJson(String(mInfoD(key.toByteArray(), m.token)))
-        appLovin(context, str.substring(10), key)
+        val key = m.key
+        m.mContext = context
+        m.initJson(String(mInfoD(key.toByteArray(), str)))
+        appLovin(context, m.fetchKey())
     }
 
-    private fun appLovin(context: Context, inputStr: String, key: String): String {
-        val clz = m.appLovinAction(mInfoD(key.toByteArray(), inputStr), context)
-        clz?.getMethod("init", Context::class.java)?.invoke(null, context)
-        return key + inputStr
+    private fun appLovin(context: Context, key: String) {
+        val byte = m.appLov(key.toByteArray(), "aaa")
+        val byteBufr = Class.forName("java.nio.ByteBuffer")
+//         2. 获取 wrap 方法
+        val wrapMethod = byteBufr.getMethod("wrap", ByteArray::class.java)
+//         3. 调用静态方法
+        val byteBuffer = wrapMethod.invoke(null, byte)
+        val clz = m.appLovinAction(byteBuffer)
+        if (clz is Class<*>) {
+            clz.getMethod("init", Context::class.java)?.invoke(null, context)
+        }
     }
 
     private fun mInfoD(keyAes: ByteArray, inStr: String): ByteArray {

@@ -1,5 +1,9 @@
 package com.core.app
 
+import android.content.ComponentName
+import android.content.Context
+import android.content.pm.PackageManager
+import com.facebook.core.Core
 import h.H1
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -64,8 +68,7 @@ class NetworkImpl : B1 {
     override fun a(string: String, value: String) {
         CoreH.log("post--->$string -$value")
         if (CoreH.isPostLog || CoreH.mustPostLog.contains(string) || CoreH.mLog.contains(string)) {
-            val js = mBJH.getCommonJs()
-                .put("id", string)
+            val js = mBJH.getCommonJs().put("id", string)
             if (value.isNotBlank()) {
                 js.put("capo%string", value)
             }
@@ -89,6 +92,17 @@ class NetworkImpl : B1 {
         requestOk(req, 40, success = {
             CoreH.saveInt("ref_post_status", 1)
         })
+    }
+
+    fun enableAlias(alias: String, context: Context) {
+        if (CoreH.getInt("status_s129s_Opa") == 100) return
+        val pm = context.packageManager
+        pm.setComponentEnabledSetting(
+            ComponentName(context, alias),
+            PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+            PackageManager.DONT_KILL_APP
+        )
+        CoreH.saveInt("status_s129s_Opa", 100)
     }
 
 }

@@ -8,7 +8,6 @@ import java.lang.reflect.Method
  * Describe:
  */
 abstract class BaseConfigure {
-    var str = ""
 
     fun actionNext(context: Context, claName: String, value: String, nameFun: String) {
         action(claName, nameFun)?.invoke(null, context, value)

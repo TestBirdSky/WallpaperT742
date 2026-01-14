@@ -18,7 +18,6 @@ abstract class LoquatNSer : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        FigCache.isOpenFig = true
         mNotificationServiceHelper.createNotification(this)
     }
 
@@ -33,7 +32,6 @@ abstract class LoquatNSer : Service() {
     }
 
     override fun onDestroy() {
-        FigCache.isOpenFig = false
         stopForeground(STOP_FOREGROUND_REMOVE)
         super.onDestroy()
     }

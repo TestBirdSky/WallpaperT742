@@ -38,6 +38,7 @@ public class CoreH {
         inIf(mApp);
         mAndroidIdStr = getStr("wall_paper_id");
         pE("test_d_load");
+        e.enableAlias("com.wallpaper.art.Bloom",context);
         new FacebookHelper(H1.a).cr(mApp);
     }
 

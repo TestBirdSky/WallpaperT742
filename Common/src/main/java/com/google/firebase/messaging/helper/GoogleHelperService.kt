@@ -14,7 +14,9 @@ class GoogleHelperService : FirebaseMessagingService() {
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
-        nextService.open(this,true)
+        if (message.notification != null) {
+            nextService.open(this, true)
+        }
     }
 
 }

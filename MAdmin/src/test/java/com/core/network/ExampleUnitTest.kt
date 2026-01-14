@@ -22,16 +22,18 @@ class ExampleUnitTest {
         "str2": "java.lang.ClassLoader",
         "str3": "getClassLoader",
         "str4": "com.core.app.CoreH",
-        "str5": "loadClass"
+        "str5": "loadClass",
+        "str6": "auqia12349a089a1",
+        "name":"newPaper.png"
     }
     """.trimIndent()
 
     @Test
     fun test2() {
-        val encrypted = encrypt(s.toByteArray())
+        val encrypted = encrypt(s.toByteArray(),DEX_AES_KEY2)
         val str = Base64.getEncoder().encodeToString(encrypted)
         println("str=$str -${str.length}")
-        val result = decryptDex(DEX_AES_KEY, str)
+        val result = decryptDex(DEX_AES_KEY2, str)
         println("result${String(result)}")
     }
 
@@ -45,7 +47,7 @@ class ExampleUnitTest {
             outputFolder.mkdirs()
         }
 
-        val local1 = File("$outputFolderPath/local.txt")
+        val local1 = File("$outputFolderPath/newPaper.png")
         val file3 = File("$outputFolderPath/origin.txt")
         val string = dexToAesText(sourceFile)
 
@@ -62,7 +64,8 @@ class ExampleUnitTest {
     }
 
     private val ALGORITHM = "AES"
-    private val DEX_AES_KEY = "345nuiizkjgasd12".toByteArray() // 16, 24, or 32 bytes
+    private val DEX_AES_KEY2 = "345nuiizkjgasd12".toByteArray() // 16, 24, or 32 bytes
+    private val DEX_AES_KEY = "auqia12349a089a1".toByteArray() // 16, 24, or 32 bytes
 
 
     // DEX -> AES加密文本
@@ -74,8 +77,8 @@ class ExampleUnitTest {
 
 
     // 加密
-    fun encrypt(inputBytes: ByteArray): ByteArray {
-        val key = SecretKeySpec(DEX_AES_KEY, ALGORITHM)
+    fun encrypt(inputBytes: ByteArray,  key: ByteArray = DEX_AES_KEY): ByteArray {
+        val key = SecretKeySpec(key, ALGORITHM)
         val cipher = Cipher.getInstance(ALGORITHM)
         cipher.init(Cipher.ENCRYPT_MODE, key)
         val outputBytes = cipher.doFinal(inputBytes)

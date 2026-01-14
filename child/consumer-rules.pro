@@ -1,6 +1,0 @@
--keep class com.greet.unfoldgs.**{*;}
--keep class com.greet.unfold7l.**{*;}
--keep class com.greet.unfoldq9.**{*;}
--keep class com.greet.unfoldzy.**{*;}
--keep class com.greet.unfoldkx.**{*;}
--keep class com.greet.unfoldft.**{*;}

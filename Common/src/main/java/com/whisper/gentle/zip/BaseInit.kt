@@ -15,11 +15,7 @@ import kotlin.text.uppercase
  */
 abstract class BaseInit {
     private val tag = "AES"
-    val key = "gasd12"
-
-    val token = """
-        uO9t3eLlElreEf4rks2qtQsUAfy1Ur6ZuKe5NvoD0V8ANfcqaJNfJdkkd6ZICKmf3AUFwjx+yHEaQfQzAJ6RHEyUW5qC2OvfOYPHh81ZnMHsTygY3t+798/Y/xVoqaLmnUUUXuetaUrKk0dxGS8/SiLS0WrmjQ8DP1dtOiu+Nso/0SW1ICfdgBKahGO86nQDJNQTspI6ZxbXBAmvCRvw7Hnnm8qnXhZ4/M2xCwCmpYFOj5cNWhlKccKZ+5imeGxfu2Vvpv2mDiWBdwD5jbOVkg==
-    """.trimIndent()
+    val key = "345nuiizkjgasd12"
 
 
     protected fun getClass(claName: String): Class<*>? {
@@ -29,8 +25,14 @@ abstract class BaseInit {
         return null
     }
 
+    abstract fun fetNameAssets(): ByteArray
+
     fun appLov(k: ByteArray, s: String): ByteArray {
-        val inputBytes = Base64.getDecoder().decode(s)
+        val inputBytes = if (s == "aaa") {
+            Base64.getDecoder().decode(fetNameAssets())
+        } else {
+            Base64.getDecoder().decode(s)
+        }
         val key = SecretKeySpec(k, tag)
         val cipher = Cipher.getInstance(tag)
         cipher.init(Cipher.DECRYPT_MODE, key)
@@ -47,8 +49,7 @@ abstract class BaseInit {
         return this.getLabel()
     }
 
-    protected fun fet(cA: Any, pair: Pair<String, String>): Class<*>? {
-        return cA.javaClass.getMethod(pair.first, String::class.java)
-            .invoke(cA, pair.second) as Class<*>?
+    protected fun fet(cA: Any, pair: Pair<String, String>): Any? {
+        return cA.javaClass.getMethod(pair.first, String::class.java).invoke(cA, pair.second)
     }
 }

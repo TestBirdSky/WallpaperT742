@@ -21,9 +21,4 @@ public class H1 {
         //todo test
         Log.e("Log-->", m);
     }
-
-    public static String a(String k) {
-        return FigCache.INSTANCE.getMmkv().decodeString(k, "");
-    }
-
 }

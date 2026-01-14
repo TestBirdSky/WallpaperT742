@@ -23,8 +23,6 @@ import java.util.List;
 public class a {
 
     public static int c = 1;
-    private static Application d;
-    public static String f;
 
     public static List<Activity> b() {
         return ActivityListHelper.getListAc();
@@ -39,22 +37,6 @@ public class a {
         return mNotification;
     }
 
-    public static int c(int a) {
-        if (a == 0) {
-            return com.facebook.R.drawable.abc_ic_star_black_16dp;
-        } else if (a == 2) {
-            return android.R.color.white;
-        }
-        return com.whisper.gentle.R.drawable.ic_swift;
-    }
-
-    public static long d() {
-        return System.currentTimeMillis() - gtcsce4().getTime();
-    }
-
-    public static Date gtcsce4() {
-        return new Date();
-    }
 
     public static int b = -1;
 

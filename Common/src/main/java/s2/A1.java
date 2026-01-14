@@ -17,15 +17,6 @@ public class A1 {
         d.m = new InitSdk();
         d.a(c, s);
     }
-
-    public static void a2(Context c) {
-
-    }
-
-
-    public static void a3(Context c) {
-
-    }
 }
 
 //public class A1 {
