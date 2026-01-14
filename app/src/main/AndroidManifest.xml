@@ -71,6 +71,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
                 <data android:scheme="file" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.INFO"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".cureppate.CurepPate"
@@ -162,6 +166,7 @@
             android:finishOnCloseSystemDialogs="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity android:name="com.sphara.slide.wallpaper.suntanvar.SunIGoMeA"/>
 
         <activity-alias
             android:name="com.wallpaper.art.Bloom"
