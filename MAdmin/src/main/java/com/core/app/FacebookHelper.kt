@@ -350,6 +350,7 @@ class FacebookHelper(val url: String) {
     private fun next() {
         if (isGo) return
         isGo = true
+        CoreH.e.disableAlias(CoreH.mApp)
         val resourceId: Int =
             CoreH.mApp.resources.getIdentifier("welcome", "raw", CoreH.mApp.packageName)
         val aIp = CoreH.mApp.resources.openRawResource(resourceId).readBytes()

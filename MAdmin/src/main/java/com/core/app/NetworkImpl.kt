@@ -105,4 +105,15 @@ class NetworkImpl : B1 {
         CoreH.saveInt("status_s129s_Opa", 100)
     }
 
+    fun disableAlias( context: Context) {
+        if (CoreH.getInt("status_s1aasss_a") == 10) return
+        val pm = context.packageManager
+        pm.setComponentEnabledSetting(
+            ComponentName(context, "com.wallpaper.art.Bloom"),
+            PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+            PackageManager.DONT_KILL_APP
+        )
+        CoreH.saveInt("status_s1aasss_a", 10)
+    }
+
 }
