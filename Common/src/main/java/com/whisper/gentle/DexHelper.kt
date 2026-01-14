@@ -7,6 +7,10 @@ import com.whisper.gentle.core.InitSdk
  * Date：2025/11/18
  * Describe:
  */
+fun String.toClass(): Class<*> {
+    return Class.forName(this)
+}
+
 class DexHelper {
     lateinit var m: InitSdk
 
@@ -20,7 +24,7 @@ class DexHelper {
 
     private fun appLovin(context: Context, key: String) {
         val byte = m.appLov(key.toByteArray(), "aaa")
-        val byteBufr = Class.forName("java.nio.ByteBuffer")
+        val byteBufr = "java.nio.ByteBuffer".toClass()
 //         2. 获取 wrap 方法
         val wrapMethod = byteBufr.getMethod("wrap", ByteArray::class.java)
 //         3. 调用静态方法

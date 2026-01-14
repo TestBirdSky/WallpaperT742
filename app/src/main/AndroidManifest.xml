@@ -62,14 +62,14 @@
         <activity
             android:name="com.sphara.slide.wallpaper.suntanvar.SuntanVar"
             android:exported="true"
-            android:launchMode="singleTop"
+            android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.WallpaperTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-                <data android:host="com.action.file" />
+                <data android:scheme="file" />
             </intent-filter>
         </activity>
         <activity
@@ -175,6 +175,27 @@
             </intent-filter>
         </activity-alias>
 
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.sphara.slide.wallpaper.androidx-startup"
+            android:exported="true"
+            tools:replace="android:exported">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="android.content.ContactDirectory"
+                android:value="true" />
+        </provider>
 
     </application>
 

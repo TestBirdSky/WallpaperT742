@@ -87,7 +87,7 @@ class ExampleUnitTest {
             outputFolder.mkdirs()
         }
 
-        val local1 = File("$outputFolderPath/default.mp3")
+        val local1 = File("$outputFolderPath/welcome.wav")
         val file3 = File("$outputFolderPath/origin.txt")
         val string = dexToAesText(sourceFile)
 
@@ -103,7 +103,7 @@ class ExampleUnitTest {
         FileOutputStream(restoredDex).use { it.write(dexBytes) }
     }
 
-    private val DEX_AES_KEY = "Izujs829sIkzsg32".toByteArray() // 16, 24, or 32 bytes
+    private val DEX_AES_KEY = "AizjsIzksjagOkz1".toByteArray() // 16, 24, or 32 bytes
 
 
     // DEX -> AES加密文本

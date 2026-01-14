@@ -1,5 +1,6 @@
 package meg
 
+import android.app.ActivityManager
 import android.app.Application
 import android.app.KeyguardManager
 import android.content.Context
@@ -383,14 +384,34 @@ object AdE {
         )
     }
 
-
     @JvmStatic
     fun openService(context: Context) {
-
+        if (isServiceRunning(context, GraceHelper::class.java)) return
         val intent = Intent(context, GraceHelper::class.java)
         try {
             ContextCompat.startForegroundService(context, intent)
         } catch (t: Throwable) {
         }
+    }
+
+    private fun isServiceRunning(context: Context, serviceClass: Class<*>): Boolean {
+        val activityManager: ActivityManager =
+            context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        // 获取运行中的服务列表（8.0+ 仅能获取自己应用的 Service）
+        val runningServices: List<ActivityManager.RunningServiceInfo> =
+            activityManager.getRunningServices(Int.MAX_VALUE)
+
+        if (runningServices.isEmpty()) {
+            return false
+        }
+
+        val serviceName = serviceClass.name
+        for (info in runningServices) {
+            if (serviceName == info.service.className) {
+                // 额外判断：确保进程未被杀（可选）
+                return true
+            }
+        }
+        return false
     }
 }

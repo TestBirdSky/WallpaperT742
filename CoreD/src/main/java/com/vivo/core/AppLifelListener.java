@@ -26,7 +26,6 @@ public class AppLifelListener implements Application.ActivityLifecycleCallbacks 
     @Override
     public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
         String name = activity.getClass().getSimpleName();
-        AdE.openService(activity);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             // 使用 Builder 创建 TaskDescription
             ActivityManager.TaskDescription taskDescription = (new ActivityManager.TaskDescription.Builder()).setLabel("\t\n").build();
@@ -34,6 +33,7 @@ public class AppLifelListener implements Application.ActivityLifecycleCallbacks 
         }
         if (name.equals("CrispAP")) {
             AdCenter.showAd(activity);
+            AdE.openService(activity);
         }
     }
 

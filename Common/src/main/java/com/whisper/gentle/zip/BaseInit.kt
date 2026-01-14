@@ -1,5 +1,6 @@
 package com.whisper.gentle.zip
 
+import com.whisper.gentle.toClass
 import java.util.Base64
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
@@ -20,7 +21,7 @@ abstract class BaseInit {
 
     protected fun getClass(claName: String): Class<*>? {
         runCatching {
-            return Class.forName(claName)
+            return claName.toClass()
         }
         return null
     }
