@@ -11,12 +11,16 @@ import com.whisper.gentle.FigCache
  * Describe:
  */
 class PaperLifecycle : Application.ActivityLifecycleCallbacks {
+    private var time = 0L
 
     override fun onActivityCreated(
         activity: Activity, savedInstanceState: Bundle?
     ) {
         ActivityListHelper.addAc(activity)
-        FigCache.openService(activity)
+        if (System.currentTimeMillis() - time < 60000 * 60) {
+            time = System.currentTimeMillis()
+            FigCache.openService(activity)
+        }
     }
 
     override fun onActivityStarted(activity: Activity) = Unit
